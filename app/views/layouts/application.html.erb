@@ -16,6 +16,11 @@
     <% else %>
       <%= link_to 'sign in', new_user_session_path %>
     <% end %>
+
+    <div id="flash" class="flash">
+      <%= render "layouts/flash" %>
+    </div>
+    
     <%= yield %>
   </body>
 </html>

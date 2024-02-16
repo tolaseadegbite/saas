@@ -1,2 +1,10 @@
+// import bootstrap
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
+// import components
+@import 'components/flash';
+
+// import config
+@import 'config/animation';
+@import 'config/variable';
