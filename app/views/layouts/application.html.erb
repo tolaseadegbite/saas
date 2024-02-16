@@ -12,7 +12,7 @@
 
   <body>
     <% if user_signed_in? %>
-      <p>Hello, <%= current_user.firstname %></p>
+      <p>Hello, <%= current_user.fullname %></p>
     <% else %>
       <%= link_to 'sign in', new_user_session_path %>
     <% end %>
