@@ -35,6 +35,7 @@ class User < ApplicationRecord
   end
 
   has_many :categories, dependent: :destroy
+  has_many :businesses, dependent: :destroy
 
   # has_one_attached :avatar
 end

@@ -21,3 +21,7 @@
 cat_1:
   name: fashion
   user: tolase
+
+cat_2:
+  name: electronics
+  user: tolase
