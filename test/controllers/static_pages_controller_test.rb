@@ -7,12 +7,12 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get pricing" do
-    get static_pages_pricing_url
+    get pricing_path
     assert_response :success
   end
 
   test "should get dashboard" do
-    get static_pages_dashboard_url
+    get dashboard_path
     assert_response :success
   end
 end

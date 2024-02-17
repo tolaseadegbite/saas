@@ -11,16 +11,20 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      <p>Hello, <%= current_user.fullname %></p>
-    <% else %>
-      <%= link_to 'sign in', new_user_session_path %>
-    <% end %>
+    <div class="main-container d-flex">
+      <div class="h-100">
+        <%= render 'layouts/sidebar' %>
+      </div>
 
-    <div id="flash" class="flash">
-      <%= render "layouts/flash" %>
-    </div>
-    
-    <%= yield %>
+      <div>
+        <%= render 'layouts/navbar' %>
+
+        <div id="flash" class="flash">
+          <%= render "layouts/flash" %>
+        </div>
+        
+        <%= yield %>
+
+      </div>
   </body>
 </html>
