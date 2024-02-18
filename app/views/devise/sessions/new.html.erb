@@ -1,6 +1,6 @@
 <% provide(:title, "Log In") %>
 
-<h1 class="text-center mt-4 mb-5">
+<h1 class="h3 text-center mt-4 mb-5">
   <%= link_to root_path, class: 'text-white', style: 'letter-spacing: 5px' do %>
   <i class="bi bi-buildings" style="color: #a6cba6;"></i>
     SAAS
@@ -8,7 +8,7 @@
 </h1>
 
 <div class="container bg-white shadow d-block py-5 px-4" style="max-width: 450px;">
-  <h2 class="h5 fw-light text-center mb-4", style='letter-spacing: 2px'>LOGIN</h2>
+  <h2 class="h6 fw-light text-center mb-4", style='letter-spacing: 2px'>LOGIN</h2>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field mb-3">
@@ -32,6 +32,7 @@
   <% end %>
 
 </div>
+
 <div class="text-center mt-4 text-white">
   <%= render "devise/shared/links" %>
 </div>

@@ -1,39 +1,44 @@
-<h2>Sign up</h2>
+<% provide(:title, "sIGN UP") %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<h1 class="text-center mt-4 mb-5">
+  <%= link_to root_path, class: 'text-white', style: 'letter-spacing: 5px' do %>
+  <i class="bi bi-buildings" style="color: #a6cba6;"></i>
+    SAAS
+  <% end %>
+</h1>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<div class="container bg-white shadow d-block py-5 px-4" style="max-width: 450px;">
+  <h2 class="h6 fw-light text-center mb-4", style='letter-spacing: 2px'>CREATE A NEW ACCOUNT</h2>
 
-  <div class="field">
-    <%= f.label :firstname %><br />
-    <%= f.text_field :firstname, autocomplete: "firstname" %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :surname %><br />
-    <%= f.text_field :surname, autocomplete: "surname" %>
-  </div>
+    <div class="field mb-3">
+      <%= f.email_field :email, autofocus: true, placeholder: 'Email address', autocomplete: "email", class: 'rounded-0 form-control-lg form-control' %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <div class="field mb-3">
+      <%= f.text_field :firstname, autofocus: true, placeholder: 'Firstname', autocomplete: "firstname", class: 'rounded-0 form-control-lg form-control' %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="field mb-3">
+      <%= f.text_field :surname, autofocus: true, placeholder: 'Surname', autocomplete: "surname", class: 'rounded-0 form-control-lg form-control' %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+    <div class="field mb-3">
+      <%= f.password_field :password, autocomplete: "new-password", placeholder: 'Enter your password (6 characters minimum)', class: 'rounded-0 form-control-lg form-control' %>
+    </div>
 
-<%= render "devise/shared/links" %>
+    <div class="field mb-3">
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: 'Confirm your password', class: 'rounded-0 form-control-lg form-control' %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Sign up", class: "btn btn-success w-100 rounded-1" %>
+    </div>
+  <% end %>
+</DIV>
+
+<div class="text-center mt-4 text-white">
+  <%= render "devise/shared/links" %>
+</div>
