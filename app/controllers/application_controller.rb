@@ -8,6 +8,9 @@ class ApplicationController < ActionController::Base
     def find_models
       @categories = Category.all.pluck(:name, :id)
       @businesses = current_user.businesses
+      if params[:id].present?
+        @current_business ||= current_user.businesses.find(params[:id])
+      end
     end
 
     protected

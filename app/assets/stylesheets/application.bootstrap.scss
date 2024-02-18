@@ -12,11 +12,16 @@
 
 body{
   background: #eee;
+  color: rgb(87, 88, 78);
   font-size: 13px;
 }
 
-h1,h2,h3,h4,h5,h6, p {
+h1,h2,h3,h4,h5,h6, p, a {
   color: rgb(87, 88, 78);
+}
+
+a {
+  text-decoration: none;
 }
 
 .form-control, .dropdown-menu {

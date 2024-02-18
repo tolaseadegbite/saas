@@ -1,0 +1,9 @@
+<li class="nav-item">
+    <p class="m-0 fw-medium fs-6">
+        <% if controller.controller_name == 'businesses' && action_name == 'index' %>
+            Businesses - <%= @businesses.count %>
+        <% elsif controller.controller_name == 'businesses' && action_name == 'show' %>
+            <%= link_to 'My Businesses', businesses_path %> <i class="bi bi-chevron-right" style="font-size: 10px"></i> <%= @business.name %>
+        <% end %>
+    </p>
+</li>

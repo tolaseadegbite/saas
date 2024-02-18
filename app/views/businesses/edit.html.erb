@@ -1,0 +1,14 @@
+<% provide(:title, "Edit Business") %>
+
+<div class="container mt-5 w-50 mx-auto">
+    <div class="header text-center mb-4">
+        <h1 class="h4">
+            Edit Business
+        </h1>
+        <p>Add to your businesses</p>
+    </div>
+
+    <div class="wrapper py-4 px-3 bg-white border border-light-emphasis">
+        <%= render 'form', business: @business %>
+    </div>
+</div>

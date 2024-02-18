@@ -1,0 +1,22 @@
+<% provide(:title, @business.name) %>
+
+<div class="container d-block pt-4 px-4">
+    <div class="row">
+        <div class="col-md-6 pe-4 border-right">
+            <i class="bi bi-buildings fs-4"></i>
+            <div class="header">
+                <h1 class="h4 my-4"><%= @business.name %></h1>
+
+                <p class="fw-medium">
+                   <%= @business.category.name %>
+                </p>
+
+                <p class="card-text"><%= @business.description %></p>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+
+        </div>
+    </div>
+</div>
