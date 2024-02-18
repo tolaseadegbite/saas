@@ -26,4 +26,6 @@ class Business < ApplicationRecord
 
   belongs_to :category
   belongs_to :user
+
+  scope :ordered, -> { order(id: :desc) }
 end

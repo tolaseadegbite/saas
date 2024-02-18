@@ -1,0 +1,27 @@
+<div class="business py-3 px-3">
+    <%= form_with model: Business.new, url: form_submit_path, method: :post, data: { controller: 'business-form' } do |form| %>
+
+        <div class="mb-3">
+            <%= form.label :name %>
+            <%= form.text_field :name, class: 'form-control' %>
+        </div>
+
+        <div class="mb-3">
+            <%= form.label :description %>
+            <%= form.text_area :description, placeholder: "Describe your business", class: "w-100 form-control mb-4" %>
+        </div>
+
+        <div class="mb-3">
+            <%= form.label :business_category %>
+            <% unless form.object.new_record? %>
+                <%= form.select :category_id, Category.all.pluck(:name, :id), { include_blank: "Select category", selected: @business.category.id }, class: "form-control" %>
+            <% else %>
+                <%= form.select :category_id, Category.all.pluck(:name, :id), { include_blank: "Select category" }, class: "form-control" %>
+            <% end %>
+        </div>
+
+        <div class="d-flex justify-content-end">
+            <%= form.submit button_label, class: "btn btn-success" %>
+        </div>
+    <% end %>
+</div>

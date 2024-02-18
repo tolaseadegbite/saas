@@ -1,5 +1,14 @@
 class ApplicationController < ActionController::Base
     before_action :configure_permitted_parameters, if: :devise_controller?
+    before_action :find_models
+
+
+    private
+    
+    def find_models
+      @categories = Category.all.pluck(:name, :id)
+      @businesses = current_user.businesses
+    end
 
     protected
 

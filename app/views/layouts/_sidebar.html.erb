@@ -10,9 +10,9 @@
 
     <!-- Business accordion start -->
     <div class="accordion accordion-flush" id="accordionFlushExample">
-        <div class="accordion-item">
+        <div class="accordion-item" style="background: #09311e;">
             <div class="accordion-header">
-                <button class="accordion-button collapsed py-2 px-2" style="background: #09311e; box-shadow: none" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                <button class="accordion-button collapsed py-2 px-2 rounded" style="background: #09311e; box-shadow: none" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                     <div class="d-block fw-medium">
                         <div class="m-0 text-white"><small>Arikeade Trendings</small></div>
                         <div class="m-0" style="color: #91af9c"><small>1440630</small></div>
@@ -22,7 +22,7 @@
             
             <div id="flush-collapseOne" class="accordion-collapse collapse" style="background: #09311e" data-bs-parent="#accordionFlushExample">
                 <div class="accordion-body p-0" style="background: #09311e">
-                    <h6 class=" text-success py-2 px-2" style="font-size: 11px;">OTHER BUSINESSES - 4</h6>
+                    <h6 class=" text-success py-2 px-2" style="font-size: 11px;">OTHER BUSINESSES - <%= current_user.businesses.count %></h6>
 
                     <div class="input-group input-group-sm px-2">
                         <span class="input-group-text border-0" style="background: #041c11e3;" id="basic-addon1">
@@ -32,22 +32,31 @@
                     </div>
 
                     <ul class="list-unstyled px-2">
+                        <% current_user.businesses.each do |business| %>
+                            <li class="">
+                                <%= link_to business.name, business, class: 'text-decoration-none border-bottom border-secondary pt-2 pb-2 d-block', style: 'color: #91af9c' %>
+                            </li>
+                        <% end %>
+                        
                         <li class="">
-                            <a href="#" class="text-decoration-none border-bottom border-secondary pt-2 pb-3 d-block" style="color: #91af9c">
-                                Tolase Adegbite
-                            </a>
-                        </li>
-
-                        <li class="">
-                            <a href="#" class="text-decoration-none border-bottom border-secondary  pt-2 pb-3 d-block" style="color: #91af9c">
+                            <%= link_to new_business_path, class: "text-decoration-none border-bottom border-secondary ps-0 pt-2 pb-2 d-block w-100 text-start", style: 'color: #91af9c; background: none; border: 0' do %>
+                                <i class="bi bi-plus-lg text-secondary fw-medium"></i>
                                 Add Business
-                            </a>
+                            <% end %>
+                        </li>
+                        
+                        <li class="">
+                            <%= link_to businesses_path, class: "text-decoration-none border-bottom border-secondary ps-0 pt-2 pb-2 d-block w-100 text-start", style: 'color: #91af9c; background: none; border: 0' do %>
+                                <i class="bi bi-buildings text-secondary fw-medium"></i>
+                                My Businesses
+                            <% end %>
                         </li>
 
                         <li class="">
-                            <a href="#" class="text-decoration-none pt-2 pb-3 d-block" style="color: #91af9c">
-                                Sign Out
-                            </a>
+                            <%= link_to new_business_path, class: "text-decoration-none ps-0 pt-2 pb-2 d-block w-100 text-start", style: 'color: #91af9c; background: none; border: 0' do %>
+                                <i class="bi bi-box-arrow-right text-secondary fw-medium"></i>
+                                Log Out
+                            <% end %>
                         </li>
 
                     </ul>
@@ -112,3 +121,19 @@
     <!-- Sidebar navigation ends -->
 
 </div>
+
+<!-- business modal starts -->
+<div class="modal" id="businessModal" tabindex="-1" aria-labelledby="businessModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <button type="button" class="btn-close mx-0 close-modal-btn" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h1 class="h4">New Business</h1>
+        <%= render 'shared/business_form', form_submit_path: businesses_path, button_label: "Create business" %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- business modal ends -->

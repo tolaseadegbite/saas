@@ -1,51 +1,49 @@
-<div class="content">
-    <nav class="navbar navbar-expand-md navbar-light bg-light border-bottom border-light-emphasis">
-        <div class="container-fluid">
-            <div class="d-flex justify-content-between d-md-none d-block">
-                <button class="btn px-1 py-0 open-btn me-2"><i class="bi bi-list"></i></button>
-                <a class="navbar-brand fs-4" href="#"><span class="bg-dark rounded px-2 py-0 text-white">SAAS</span></a>
-                
-            </div>
-            <button class="navbar-toggler p-0 border-0" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <i class="bi bi-list"></i>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                <ul class="navbar-nav mb-2 mb-lg-0">
-                    <% if user_signed_in? %>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <%= current_user.fullname %>
-                                <%= image_tag 'avatar1.jpeg', size: '30', class: 'rounded-circle' %>
-                                <i class="bi bi-chevron-down"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end rounded-1">
-                                <%= link_to '#', class: 'dropdown-item' do %>
-                                    <i class="bi bi-person me-1"></i>
-                                    Profile
-                                <% end %>
-                                <%= link_to '#', class: 'dropdown-item' do %>
-                                    <i class="bi bi-person me-1"></i>
-                                    Documentation
-                                <% end %>
-                                <%= link_to '#', class: 'dropdown-item' do %>
-                                    <i class="bi bi-person me-1"></i>
-                                    Support
-                                <% end %>
-                                <li><hr class="dropdown-divider"></li>
-                                <%= link_to '#', class: 'dropdown-item' do %>
-                                    <i class="bi bi-person me-1"></i>
-                                    Logout
-                                <% end %>
-                            </ul>
-                        </li>
-                    <% else %>
-                        <%= link_to 'Sign in', new_user_session_path, class: "nav-link" %>
-                    <% end %>
-                </ul>
-
-            </div>
+<nav class="navbar navbar-expand-md navbar-light bg-light border-bottom border-light-emphasis">
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between d-md-none d-block">
+            <button class="btn px-1 py-0 open-btn me-2"><i class="bi bi-list"></i></button>
+            <a class="navbar-brand fs-4" href="#"><span class="bg-dark rounded px-2 py-0 text-white">SAAS</span></a>
+            
         </div>
-    </nav>
-</div>
+        <button class="navbar-toggler p-0 border-0" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-list"></i>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <% if user_signed_in? %>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <%= current_user.fullname %>
+                            <%= image_tag 'avatar1.jpeg', size: '30', class: 'rounded-circle' %>
+                            <i class="bi bi-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end rounded-1">
+                            <%= link_to '#', class: 'dropdown-item' do %>
+                                <i class="bi bi-person me-1"></i>
+                                Profile
+                            <% end %>
+                            <%= link_to '#', class: 'dropdown-item' do %>
+                                <i class="bi bi-info-square me-1"></i>
+                                Documentation
+                            <% end %>
+                            <%= link_to '#', class: 'dropdown-item' do %>
+                                <i class="bi bi-chat-left me-1"></i>
+                                Support
+                            <% end %>
+                            <li><hr class="dropdown-divider"></li>
+                            <%= link_to '#', class: 'dropdown-item' do %>
+                                <i class="bi bi-box-arrow-right me-1"></i>
+                                Log Out
+                            <% end %>
+                        </ul>
+                    </li>
+                <% else %>
+                    <%= link_to 'Sign in', new_user_session_path, class: "nav-link" %>
+                <% end %>
+            </ul>
+
+        </div>
+    </div>
+</nav>
