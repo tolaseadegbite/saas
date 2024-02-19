@@ -18,7 +18,8 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Category < ApplicationRecord
-  validates :name, presence: true, uniqueness: { case_sensitive: false, message: "category name must be unique" }
+  # validates presence, uniqueness and case-sensitivity of name attribute
+  validates :name, presence: true, uniqueness: { case_sensitive: false, message: "Category name must be unique" }
   
   belongs_to :user
 end

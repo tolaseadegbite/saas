@@ -16,6 +16,10 @@ body{
   font-size: 13px;
 }
 
+.fixed-sidebar-margin {
+  margin-left: 19.3em;
+}
+
 h1,h2,h3,h4,h5,h6, p, a {
   color: rgb(87, 88, 78);
 }
@@ -52,4 +56,20 @@ td a {
   text-decoration: none;
   // border: 1px solid black;
   // padding: 16px; 
+}
+
+@media(max-width: 767px){
+  .fixed-sidebar-margin {
+    margin-left: 0;
+  }
+}
+
+@media(max-width: 580px){
+  .fixed-sidebar-margin {
+    margin-left: 0;
+  }
+
+  .navbar-app {
+    width: 50%;
+  }
 }

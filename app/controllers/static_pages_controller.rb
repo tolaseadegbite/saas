@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+  skip_before_action :authenticate_user!
+  
   def home
   end
 
@@ -6,5 +8,6 @@ class StaticPagesController < ApplicationController
   end
 
   def dashboard
+    render layout: 'static_pages'
   end
 end

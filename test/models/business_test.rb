@@ -28,10 +28,10 @@ class BusinessTest < ActiveSupport::TestCase
   def setup
     @user = users(:tolase)
     @category = categories(:cat_1)
-    @business = @user.businesses.build(name: 'Business name', description: 'business description', category: @category)
+    @business = @user.businesses.build(name: 'Business name', description: 'business description', business_code: 'cde7d7', category: @category)
   end
 
-  test 'user should be valid' do
+  test 'business must be valid' do
     assert @user.valid?
   end
 

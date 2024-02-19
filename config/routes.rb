@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   root "static_pages#home"
 
-  resources :businesses
+  resources :businesses do
+    resources :products
+  end
   
   get '/dashboard', to: 'static_pages#dashboard'
   get '/pricing', to: 'static_pages#pricing'

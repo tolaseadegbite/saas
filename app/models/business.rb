@@ -30,6 +30,8 @@ class Business < ApplicationRecord
   belongs_to :category
   belongs_to :user
 
+  has_many :products, dependent: :destroy
+
   scope :ordered, -> { order(id: :desc) }
 
   def Business.new_token
