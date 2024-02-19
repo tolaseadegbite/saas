@@ -6,6 +6,8 @@
             <%= link_to 'My Businesses', businesses_path %> <i class="bi bi-chevron-right" style="font-size: 10px"></i> <%= @business.name %>
         <% elsif controller.controller_name == 'businesses' && action_name == 'edit' %>
             <%= link_to 'My Businesses', businesses_path %> <i class="bi bi-chevron-right" style="font-size: 10px"></i> <%= link_to @business.name, @business %> <i class="bi bi-chevron-right" style="font-size: 10px"></i> Edit <%= @business.name %>
+        <% elsif controller.controller_name == 'products' && action_name == 'index' %>
+            <%= link_to @business.name, @business %> <i class="bi bi-chevron-right" style="font-size: 10px"></i> All Products
         <% end %>
     </p>
 </li>
