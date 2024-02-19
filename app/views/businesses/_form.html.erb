@@ -1,4 +1,6 @@
 <%= form_with model: business do |f| %>
+
+    <%= render 'shared/error_messages', f: f %>
     
     <div class="mb-3">
         <%= f.label :business_category, class: 'fw-medium mb-2' %>
@@ -16,7 +18,7 @@
 
     <div class="mb-3">
         <%= f.label :description, class: 'fw-medium mb-2' %>
-        <%= f.text_area :description, placeholder: "Describe your business", class: "w-100 form-control mb-4" %>
+        <%= f.text_area :description, placeholder: "Describe your business", class: "w-100 form-control mb-4", style: 'height: 10em' %>
     </div>
 
 
