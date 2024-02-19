@@ -17,7 +17,6 @@ document.addEventListener('turbo:load', () => {
     
     });
     
-    
     $('.close-btn').on('click', function () {
         $('.sidebar').removeClass('active');
     

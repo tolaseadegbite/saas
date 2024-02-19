@@ -75,8 +75,8 @@
     <!-- Sidebar navigartion starts -->
     <% if controller.controller_name == 'businesses' && (action_name == 'show' || action_name == 'edit' ) %>
         <ul class="list-unstyled mt-3">
-            <li>
-                <%= link_to @current_business, class: 'text-decoration-none  py-2 d-block' do %>
+            <li class="active">
+                <%= link_to @current_business, class: 'text-decoration-none py-2 d-block' do %>
                     <i class="bi bi-house-door me-1"></i>
                     Dashboard
                 <% end %>
