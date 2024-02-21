@@ -50,6 +50,11 @@ a {
   }
 }
 
+.form-control:focus, .form-select:valid:focus {
+  box-shadow: none;
+  border: 1px solid #041c11;
+}
+
 td a { 
   display: block; 
   color: #041c11;

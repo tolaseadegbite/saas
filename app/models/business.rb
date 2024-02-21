@@ -25,6 +25,7 @@
 class Business < ApplicationRecord
 
   before_create :create_business_code
+  
   validates :name, presence: true, uniqueness: {scope: :user_id, message: "Business name must be unique"}, length: { minimum: 3, maximum: 50 }
 
   belongs_to :category

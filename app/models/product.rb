@@ -25,7 +25,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Product < ApplicationRecord
-  before_create :product_code
+  before_create :create_product_code
 
   # validates presence, uniqueness, length and case-sensitivity of name attribute
   validates :name, presence: true, uniqueness: { case_sensitive: false, message: "Product name must be unique" }, length: { minimum: 3, maximum: 50 }
@@ -48,7 +48,7 @@ class Product < ApplicationRecord
   end
 
   # update product_code attribute with the generated token
-  def product_code
+  def create_product_code
     self.product_code = Product.new_token
   end
 end

@@ -1,5 +1,71 @@
-<% provide(:title, "All products | #{@business.name}") %>
+<% provide(:title, "#{@products.count} products of #{@business.name}") %>
 
-<div class="container d-block pt-4 w-75">
+<div class="container bg-white py-3 d-flex justify-content-between">
+    <div class="first-col d-flex align-items-center">
+        <div class="dropdown me-2">
+            <a class="btn rounded-1 border fw-medium" style="background: #f5f5f5; font-size: 13px" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Filter
+                <i class="bi bi-chevron-down" style="font-size: 10px"></i>
+            </a>
 
+            <ul class="dropdown-menu rounded-1">
+                <li><a class="dropdown-item" href="#">Complete Payment</a></li>
+                <li><a class="dropdown-item" href="#">Partial Debtors</a></li>
+                <li><a class="dropdown-item" href="#">100% Debtors</a></li>
+            </ul>
+        </div>
+
+        <div class="input">
+            <input type="text" class="form-control rounded-1" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+    </div>
+
+    <div class="second-col">
+        <%= link_to 'Add Product', new_business_product_path(@business), class: 'btn btn-success rounded-1', style: "font-size: 13px" %>
+    </div>
+</div>
+
+<div class="container d-block pt-4">
+    <div class="table-wrapper table-responsive card border-0 rounded-3">
+        <table class="table border">
+            <thead>
+                <tr class="fw-bold tb-header">
+                    <th scope="col py-5">Name</th>
+                    <th scope="col">Product code</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Business</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Added On</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @products.each do |product| %>
+                    <tr>
+                        <td><%= link_to product.name, business_product_path(@business, product) %></td>
+                        <td><%= link_to product.product_code, business_product_path(@business, product) %></td>
+                        <td><%= link_to simple_format(product.description.truncate(50)), business_product_path(@business, product) %></td>
+                        <td><%= link_to product.quantity, business_product_path(@business, product) %></td>
+                        <td><%= link_to product.unit_price, business_product_path(@business, product) %></td>
+                        <td><%= link_to product.business.name, business_product_path(@business, product) %></td>
+                        <td><%= link_to product.user.fullname, business_product_path(@business, product) %></td>
+                        <td><%= link_to product.created_at.strftime("%m/%d/%Y"), business_product_path(@business, product) %></td>
+                        <td>
+                            <div class="d-flex">
+
+                                <%= link_to business_product_path(@business, product), data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" } do %>
+                                    <i class="bi bi-trash fs-5 me-2 text-secondary"></i>
+                                <% end %>
+                                <%= link_to edit_business_product_path(@business, product) do %>
+                                    <i class="bi bi-pencil-square fs-5 text-secondary"></i>
+                                <% end %>
+                            </div>
+                        </td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
 </div>

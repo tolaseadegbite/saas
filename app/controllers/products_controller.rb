@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
     before_action :find_product, only: [:show, :edit, :update, :destroy]
 
     def index
-        @products = current_user.products.ordered
+        @products = current_user.products
     end
 
     def show
@@ -44,7 +44,7 @@ class ProductsController < ApplicationController
     def destroy
         @product.destroy
         respond_to do |format|
-            format.html { redirect_to products_url, notice: 'Product deleted!' }
+            format.html { redirect_to business_products_url(@business), notice: 'Product deleted!' }
         end
     end
 
@@ -55,7 +55,7 @@ class ProductsController < ApplicationController
     end
 
     def find_product
-      @product ||= current_user.products.find([:id])
+      @product ||= current_user.products.find(params[:id])
     end
 
     def find_business
