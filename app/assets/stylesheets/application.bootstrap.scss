@@ -32,6 +32,17 @@ a {
   font-size: 13px;
 }
 
+// form selection text
+::-moz-selection { /* Code for Firefox */
+  color: white;
+  background: green;
+}
+
+::selection {
+  color: white;
+  background: green;
+}
+
 // navbar
 .dropdown-item {
   &:hover, &:focus {
@@ -66,6 +77,11 @@ td a {
 @media(max-width: 767px){
   .fixed-sidebar-margin {
     margin-left: 0;
+  }
+  .price-field, .quantity-field {
+    width: 100% !important;
+    // display: inline-block;
+    margin: 10px 0 !important;
   }
 }
 

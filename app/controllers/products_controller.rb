@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
     before_action :find_product, only: [:show, :edit, :update, :destroy]
 
     def index
-        @products = current_user.products
+        @products = @business.products.includes(:business, :user)
     end
 
     def show
@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
         @product.user = current_user
         if @product.save
             respond_to do |format|
-                format.html { redirect_to @product, notice: 'Product successfully created' }
+                format.html { redirect_to business_product_path(@business, @product), notice: 'Product successfully created' }
             end
         else
             render :new, status: :unprocessable_entity
@@ -34,7 +34,7 @@ class ProductsController < ApplicationController
     def update
         if @product .update(product_params)
             respond_to do |format|
-                format.html { redirect_to @product, notice: 'Product successfully updated' }
+                format.html { redirect_to business_product_url(@business, @product), notice: 'Product successfully updated' }
             end
         else
             render :new, status: :unprocessable_entity

@@ -1,5 +1,5 @@
 <li class="nav-item mx-2">
-    <p class="m-0 fw-medium" style="font-size: 1.2em">
+    <p class="m-0 fw-medium" style="font-size: 1em">
         <% if controller.controller_name == 'businesses' && action_name == 'index' %>
             Businesses - <%= @businesses.count %>
         <% elsif controller.controller_name == 'businesses' && action_name == 'show' %>
@@ -10,6 +10,8 @@
             <%= link_to @business.name, @business %> <i class="bi bi-chevron-right" style="font-size: 10px"></i> <%= pluralize(@products.count, 'product') %>
         <% elsif controller.controller_name == 'products' && action_name == 'show' %>
             <%= link_to @business.name, @business %> <i class="bi bi-chevron-right" style="font-size: 10px"></i> <%= link_to 'All Products', business_products_path(@business) %> <i class="bi bi-chevron-right" style="font-size: 10px"></i> <%= @product.name %> 
+        <% elsif controller.controller_name == 'products' && action_name == 'new' %>
+            <%= link_to @business.name, @business %> <i class="bi bi-chevron-right" style="font-size: 10px"></i> <%= link_to 'All Products', business_products_path(@business) %> <i class="bi bi-chevron-right" style="font-size: 10px"></i> New Product 
         <% end %>
     </p>
 </li>

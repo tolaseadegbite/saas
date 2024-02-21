@@ -1,0 +1,11 @@
+<% provide(:title, "Editing #{@product.name} | #{@business.name}") %>
+
+
+<div class="header container py-3">
+    <%= link_to sanitize("&larr; Back to products"), business_products_path(@business) %>
+    <h1>Edit Product</h1>
+</div>
+
+<div class="container py-4 bg-white rounded-3 shadow-sm" style="max-width: 97.5%">
+    <%= render 'form', business: @business, product: @product %>
+</div>

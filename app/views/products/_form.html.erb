@@ -1,0 +1,21 @@
+<%= form_with model: [business, product] do |f| %>
+    <%= render 'shared/error_messages', f: f %>
+
+    <div class="form d-md-flex mb-3">
+        <%= f.text_field :name, autofocus: true, placeholder: 'Product name', class: 'form-control rounded-1 me-2' %>
+        <%= f.number_field :quantity, placeholder: 'Quantity', class: 'form-control rounded-1 me-2 w-25 quantity-field' %>
+        <%= f.number_field :unit_price, placeholder: 'Price', class: 'form-control rounded-1 ms-2 w-25 price-field' %>
+    </div>
+    
+    <div>
+        <%= f.text_area :description, placeholder: 'Description (Optional)', class: 'form-control rounded-1 mb-3', style: 'height: 10em' %>
+    </div>
+
+    <%= link_to business_products_path(@business), class: "btn btn-light rounded-1 border me-2" do %>
+        <%= image_tag "x.png", width: "19" %>
+    <% end %>
+
+    <%= button_tag type: 'Submit', class: "btn btn-success rounded-1 border" do %>
+        <%= image_tag "check.png", width: "19" %>
+    <% end %>
+<% end %>
