@@ -14,10 +14,7 @@ div#side_nav {
 #side_nav, .dropdown-item {
     font-size: 13px;
 }
-//  .content{
-//     min-height: 100vh;
-//     width: 100%;
-//  }
+
 hr.h-color{
     background: #000;
     height: 1px;
@@ -55,5 +52,15 @@ hr.h-color{
 }
 #side_nav.active{
     margin-left: 0;
+    }
+}
+
+.side-list-one a, .side-list-two a {
+    &:hover, &:focus, &:active {
+        background-color: #09311e;
+        color: #fff;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        transition: all 0.1s;
     }
 }

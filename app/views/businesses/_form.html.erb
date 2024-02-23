@@ -4,11 +4,7 @@
     
     <div class="mb-3">
         <%= f.label :business_category, class: 'fw-bold mb-2' %>
-        <% unless f.object.new_record? %>
-            <%= f.select :category_id, Category.all.pluck(:name, :id), { include_blank: "Select category", selected: @business.category.id }, class: "form-control" %>
-        <% else %>
-            <%= f.select :category_id, Category.all.pluck(:name, :id), { include_blank: "Select category" }, class: "form-control" %>
-        <% end %>
+        <%= f.select :category_id, Category.all.pluck(:name, :id), { include_blank: "Select category" }, class: "form-control" %>
     </div>
     
     <div class="mb-3">
@@ -21,8 +17,13 @@
         <%= f.text_area :description, placeholder: "Describe your business", class: "w-100 form-control mb-4", style: 'height: 10em' %>
     </div>
 
+    <div class="text-end">
+        <%= link_to :back, class: "btn btn-light rounded-1 border me-2" do %>
+            <%= image_tag "x.png", width: "19" %>
+        <% end %>
 
-    <div class="d-flex justify-content-end">
-        <%= f.button 'Submit', class: "btn btn-success" %>
+        <%= button_tag type: 'Submit', class: "btn btn-success rounded-1 border" do %>
+            <%= image_tag "check.png", width: "19" %>
+        <% end %>
     </div>
 <% end %>

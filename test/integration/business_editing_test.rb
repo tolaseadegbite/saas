@@ -9,7 +9,7 @@ class BusinessEditingTest < ActionDispatch::IntegrationTest
     sign_in @user
   end
 
-  test "redirect edit with invalid information" do
+  test "redirect edit with valid information" do
     get businesses_path
     assert_template 'businesses/index'
     get edit_business_path(@business)

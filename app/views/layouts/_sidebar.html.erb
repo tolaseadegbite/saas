@@ -1,9 +1,9 @@
 <%= javascript_include_tag('sidebar.js') %>
 
 <% if user_signed_in? %>
-    <div class="sidebar d-flex flex-column px-3 fixed-top border border-secondary-subtle" id="side_nav">
+    <div class="sidebar d-flex flex-column fixed-top border border-secondary-subtle" id="side_nav">
         <!-- Header starts -->
-        <div class="header-box pt-3 pb-4 d-flex justify-content-between">
+        <div class="header-box pt-3 pb-4 d-flex justify-content-between mx-3">
             <h1 class="fs-4">
                 <span class="bg-dark text-white rounded shadow px-2 me-2">S</span><span class="text-dark">AAS</span>
             </h1>
@@ -12,7 +12,7 @@
         <!-- Header ends -->
 
         <!-- Business accordion start -->
-        <div class="accordion accordion-flush border rounded" id="accordionFlushExample">
+        <div class="accordion accordion-flush mx-3 border rounded" id="accordionFlushExample">
             <div class="accordion-item border rounded">
                 <div class="accordion-header">
                     <button class="accordion-button collapsed py-2 px-2 rounded bg-light" style="box-shadow: none" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
@@ -75,30 +75,30 @@
 
         <!-- Sidebar navigartion starts -->
         <% if controller.controller_name == 'businesses' && params[:id].present? || params[:business_id].present? %>
-            <ul class="list-unstyled mt-3">
+            <ul class="list-unstyled mt-3 side-list-one me-3">
                 <li class="">
-                    <%= link_to @current_business, class: 'text-decoration-none py-2 d-block' do %>
+                    <%= link_to @current_business, class: 'text-decoration-none py-2 px-3 d-block' do %>
                         <i class="bi bi-house-door me-1"></i>
                         Dashboard
                     <% end %>
                 </li>
 
                 <li class="">
-                    <a href="#" class="text-decoration-none  py-2 d-block">
+                    <a href="#" class="text-decoration-none px-3 py-2 d-block">
                         <i class="bi bi-shop me-1"></i>
                         Stores
                     </a>
                 </li>
 
                 <li class="">
-                    <%= link_to business_products_path(@current_business), class: 'text-decoration-none  py-2 d-block' do %>
+                    <%= link_to business_products_path(@current_business), class: 'text-decoration-none px-3 py-2 d-block' do %>
                         <i class="bi bi-cart4 me-1"></i>
                         Products
                     <% end %>
                 </li>
 
                 <li class="">
-                    <a href="#" class="text-decoration-none  py-2 d-block">
+                    <a href="#" class="text-decoration-none px-3 py-2 d-block">
                         <i class="bi bi-people me-1"></i>
                         Customers
                     </a>
@@ -110,16 +110,16 @@
             <hr class="h-color mx-2">
             -->
 
-            <ul class="list-unstyled mt-auto border-top border-secondary pt-3">
+            <ul class="list-unstyled mt-auto border-top border-secondary pt-3 me-3 side-list-two">
                 <li class="">
-                    <a href="#" class="text-decoration-none  py-2 d-block">
+                    <a href="#" class="text-decoration-none px-3 py-2 d-block">
                         <i class="bi bi-graph-up-arrow me-1"></i>
                         Analytics
                     </a>
                 </li>
 
                 <li class="">
-                    <%= link_to edit_business_path(@current_business), class: 'text-decoration-none  py-2 d-block' do %>
+                    <%= link_to edit_business_path(@current_business), class: 'text-decoration-none px-3 py-2 d-block' do %>
                         <i class="bi bi-gear"></i>
                         Business Settings
                     <% end %>

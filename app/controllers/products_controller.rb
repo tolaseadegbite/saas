@@ -38,7 +38,7 @@ class ProductsController < ApplicationController
                 format.html { redirect_to business_product_url(@business, @product), notice: 'Product successfully updated' }
             end
         else
-            render :new, status: :unprocessable_entity
+            render :edit, status: :unprocessable_entity
         end
     end
 
