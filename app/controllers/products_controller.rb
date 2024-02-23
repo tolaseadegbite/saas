@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
     before_action :authenticate_user!
     before_action :find_business
     before_action :find_product, only: [:show, :edit, :update, :destroy]
+    before_action :find_correct_user, only: [:show, :edit, :update, :destroy]
 
     def index
         @products = @business.products.includes(:business, :user)
@@ -55,10 +56,15 @@ class ProductsController < ApplicationController
     end
 
     def find_product
-      @product ||= current_user.products.find(params[:id])
+      @product ||= Product.find(params[:id])
     end
 
     def find_business
-        @business ||= current_user.businesses.find(params[:business_id])
+        @business ||= Business.find(params[:business_id])
+    end
+
+    def find_correct_user
+        @product ||= Product.find(params[:id])
+        redirect_to(businesses_url, status: :see_other, notice: "Access denied, not your product.") unless @product.user == current_user
     end
 end

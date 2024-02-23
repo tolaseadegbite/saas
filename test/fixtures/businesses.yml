@@ -28,11 +28,11 @@ business_1:
   description: A cool business
   category: cat_1
   user: tolase
-  business_code: dg382346
+  business_code: dg3823
 
 business_2:
   name: Tolase Electronics
   description: A cool business
   category: cat_2
   user: tolase
-  business_code: dg382347
+  business_code: dg3824

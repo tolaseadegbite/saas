@@ -1,11 +1,14 @@
 <% provide(:title, "New Product | #{@business.name}") %>
 
-
-<div class="header container py-3">
+<div class="container mt-3 w-50 mx-auto">
     <%= link_to sanitize("&larr; Back to products"), business_products_path(@business) %>
-    <h1>New Product</h1>
-</div>
+    <div class="header my-4">
+        <h1 class="h4">
+            New Product
+        </h1>
+    </div>
 
-<div class="container py-4 bg-white rounded-3 shadow-sm" style="max-width: 97.5%">
-    <%= render 'form', business: @business, product: @product %>
+    <div class="wrapper py-4 px-3 bg-white border border-light-emphasis">
+        <%= render 'form', business: @business, product: @product %>
+    </div>
 </div>

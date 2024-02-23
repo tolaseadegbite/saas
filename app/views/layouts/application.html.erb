@@ -7,11 +7,14 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans:ital@0;1&display=swap" rel="stylesheet">
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
     <%#= javascript_include_tag 'custom/sidebar.js' %>
   </head>
 
-  <body>
+  <body style="margin-top: 62px">
     <div class="main-container d-flex">
       <div class="h-100">
         <%= render 'layouts/sidebar' %>

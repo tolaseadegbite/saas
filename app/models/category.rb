@@ -22,4 +22,5 @@ class Category < ApplicationRecord
   validates :name, presence: true, uniqueness: { case_sensitive: false, message: "Category name must be unique" }
   
   belongs_to :user
+  has_many :businesses, dependent: :destroy
 end

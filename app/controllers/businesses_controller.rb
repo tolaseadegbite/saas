@@ -1,6 +1,7 @@
 class BusinessesController < ApplicationController
   before_action :authenticate_user!
   before_action :find_business, only: [:show, :edit, :update, :destroy]
+  before_action :find_correct_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @businesses = current_user.businesses.ordered
@@ -30,12 +31,12 @@ class BusinessesController < ApplicationController
   end
 
   def update
-    if @business .update(business_params)
+    if @business.update(business_params)
       respond_to do |format|
         format.html { redirect_to @business, notice: 'Your business has been successfully updated' }
       end
     else
-      render :new, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -49,10 +50,15 @@ class BusinessesController < ApplicationController
   private
 
   def business_params
-    params.require(:business).permit(:name, :description, :user_id, :category_id)
+    params.require(:business).permit(:name, :description, :business_code, :category_id)
   end
 
   def find_business
-    @business ||= current_user.businesses.find(params[:id])
+    @business ||= Business.find(params[:id])
+  end
+
+  def find_correct_user
+    @business ||= Business.find(params[:id])
+    redirect_to(businesses_url, status: :see_other, notice: "Access denied, not your business.") unless @business.user == current_user
   end
 end

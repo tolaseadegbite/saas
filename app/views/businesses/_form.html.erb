@@ -3,7 +3,7 @@
     <%= render 'shared/error_messages', f: f %>
     
     <div class="mb-3">
-        <%= f.label :business_category, class: 'fw-medium mb-2' %>
+        <%= f.label :business_category, class: 'fw-bold mb-2' %>
         <% unless f.object.new_record? %>
             <%= f.select :category_id, Category.all.pluck(:name, :id), { include_blank: "Select category", selected: @business.category.id }, class: "form-control" %>
         <% else %>
@@ -12,12 +12,12 @@
     </div>
     
     <div class="mb-3">
-        <%= f.label :name, class: 'fw-medium mb-2' %>
+        <%= f.label :name, class: 'fw-bold mb-2' %>
         <%= f.text_field :name, class: 'form-control' %>
     </div>
 
     <div class="mb-3">
-        <%= f.label :description, class: 'fw-medium mb-2' %>
+        <%= f.label :description, class: 'fw-bold mb-2' %>
         <%= f.text_area :description, placeholder: "Describe your business", class: "w-100 form-control mb-4", style: 'height: 10em' %>
     </div>
 

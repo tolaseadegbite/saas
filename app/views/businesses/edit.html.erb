@@ -1,7 +1,8 @@
 <% provide(:title, "Edit Business") %>
 
-<div class="container mt-5 w-50 mx-auto">
-    <div class="header text-center mb-4">
+<div class="container mt-3 w-50 mx-auto">
+    <%= link_to sanitize("&larr; Back to #{@business.name}"), @business %>
+    <div class="header my-4">
         <h1 class="h4">
             Business Settings
         </h1>

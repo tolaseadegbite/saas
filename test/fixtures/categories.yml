@@ -25,3 +25,7 @@ cat_1:
 cat_2:
   name: electronics
   user: tolase
+
+cat_3:
+  name: agriculture
+  user: john
