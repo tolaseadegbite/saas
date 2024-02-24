@@ -104,11 +104,18 @@ td a {
     // display: inline-block;
     margin: 10px 0 !important;
   }
+  .container {
+    width: 100% !important;
+  }
 }
 
 @media(max-width: 580px){
   .fixed-sidebar-margin {
     margin-left: 0;
+  }
+
+  .container {
+    width: 100% !important;
   }
 
   .navbar-app {

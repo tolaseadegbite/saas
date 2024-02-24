@@ -55,6 +55,6 @@ class ProductTest < ActiveSupport::TestCase
   test 'name must be unique' do
     @product.dup.name = @product.name
     @product.dup.save
-    assert_not @business.valid?
+    assert_not @product.valid?
   end
 end

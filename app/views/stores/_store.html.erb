@@ -1,0 +1,17 @@
+<tr class="align-middle">
+    <td><%= link_to store.name, business_store_path(@business, store) %></td>
+    <td><%= link_to store.business.name, business_store_path(@business, store) %></td>
+    <td><%= link_to store.user.fullname, business_store_path(@business, store) %></td>
+    <td><%= link_to store.created_at.strftime("%m/%d/%Y"), business_store_path(@business, store) %></td>
+    <td>
+        <div class="d-flex">
+
+            <%= link_to business_store_path(@business, store), data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" }, class: 'btn rounded-1 me-2', style: 'background: hsl(0, 6%, 93%)' do %>
+                <i class="bi bi-trash fs-5 text-secondary"></i>
+            <% end %>
+            <%= link_to edit_business_store_path(@business, store), class: 'btn rounded-1', style: 'background: hsl(0, 6%, 93%)' do %>
+                <i class="bi bi-pencil-square fs-5 text-secondary"></i>
+            <% end %>
+        </div>
+    </td>
+</tr>

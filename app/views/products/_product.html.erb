@@ -1,0 +1,21 @@
+<tr class="align-middle">
+    <td><%= link_to product.name, business_product_path(@business, product) %></td>
+    <td><%= link_to product.product_code, business_product_path(@business, product) %></td>
+    <td><%= link_to simple_format(product.description.truncate(50)), business_product_path(@business, product) %></td>
+    <td><%= link_to product.quantity, business_product_path(@business, product) %></td>
+    <td><%= link_to product.unit_price, business_product_path(@business, product) %></td>
+    <td><%= link_to product.business.name, business_product_path(@business, product) %></td>
+    <td><%= link_to product.user.fullname, business_product_path(@business, product) %></td>
+    <td><%= link_to product.created_at.strftime("%m/%d/%Y"), business_product_path(@business, product) %></td>
+    <td>
+        <div class="d-flex">
+
+            <%= link_to business_product_path(@business, product), data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" }, class: 'btn rounded-1 me-2', style: 'background: hsl(0, 6%, 93%)' do %>
+                <i class="bi bi-trash fs-5 text-secondary"></i>
+            <% end %>
+            <%= link_to edit_business_product_path(@business, product), class: 'btn rounded-1', style: 'background: hsl(0, 6%, 93%)' do %>
+                <i class="bi bi-pencil-square fs-5 text-secondary"></i>
+            <% end %>
+        </div>
+    </td>
+</tr>

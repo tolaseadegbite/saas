@@ -26,13 +26,14 @@ class Business < ApplicationRecord
 
   before_create :create_business_code
   
-  validates :name, presence: true, uniqueness: {scope: :user_id, message: "Business name must be unique"}, length: { minimum: 3, maximum: 50 }
+  validates :name, presence: true, uniqueness: {scope: :user_id, message: "Business name must be unique"}, length: { minimum: 3, maximum: 255 }
   validates :category_id, presence: :true
 
   belongs_to :category
   belongs_to :user
 
   has_many :products, dependent: :destroy
+  has_many :stores, dependent: :destroy
 
   scope :ordered, -> { order(id: :desc) }
 

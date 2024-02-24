@@ -42,6 +42,16 @@ hr.h-color{
     opacity: 1;
 }
 
+.side-list-one a, .side-list-two a {
+    &:hover, &:focus, &:active {
+        background-color: #09311e;
+        color: #fff;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        transition: all 0.1s;
+    }
+}
+
 @media(max-width: 767px){
 #side_nav{
     margin-left: -250px;
@@ -50,17 +60,7 @@ hr.h-color{
     z-index: 1;
 
 }
-#side_nav.active{
-    margin-left: 0;
-    }
-}
-
-.side-list-one a, .side-list-two a {
-    &:hover, &:focus, &:active {
-        background-color: #09311e;
-        color: #fff;
-        border-top-right-radius: 20px;
-        border-bottom-right-radius: 20px;
-        transition: all 0.1s;
+    #side_nav.active{
+        margin-left: 0;
     }
 }

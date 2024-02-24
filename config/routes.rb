@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :businesses do
     resources :products
+    resources :stores
   end
   
   get '/dashboard', to: 'static_pages#dashboard'

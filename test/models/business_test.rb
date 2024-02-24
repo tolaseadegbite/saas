@@ -40,8 +40,8 @@ class BusinessTest < ActiveSupport::TestCase
     assert_not @business.valid?
   end
 
-  test 'name must be less than 50' do
-    @business.name = 'a' * 50 + 'a'
+  test 'name must be less than 255' do
+    @business.name = 'a' * 255 + 'a'
     assert_not @business.valid?
   end
 

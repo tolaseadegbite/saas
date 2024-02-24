@@ -14,6 +14,8 @@
             <%= link_to @business.name, @business %> <i class="bi bi-chevron-right" style="font-size: 10px"></i> <%= link_to 'All Products', business_products_path(@business) %> <i class="bi bi-chevron-right" style="font-size: 10px"></i> New Product
         <% elsif controller.controller_name == 'products' && action_name == 'edit' %>
              <%= link_to @business.name, @business %> <i class="bi bi-chevron-right" style="font-size: 10px"></i> <%= link_to 'All Products', business_products_path(@business) %> <i class="bi bi-chevron-right" style="font-size: 10px"></i> <%= link_to @product.name, [@business, @product] %> <i class="bi bi-chevron-right" style="font-size: 10px"></i> Edit product
+        <% elsif controller.controller_name == 'stores' && action_name == 'index' %>
+            <%= link_to @business.name, @business %> <i class="bi bi-chevron-right" style="font-size: 10px"></i> <%= pluralize(@stores.count, 'store') %>
         <% end %>
     </p>
 </li>

@@ -1,0 +1,35 @@
+<% provide(:title, "#{@stores.count} stores of #{@business.name}") %>
+
+<div class="container-fluid bg-white py-3 d-flex justify-content-between">
+    <div class="first-col d-flex align-items-center">
+        <div class="input">
+            <input type="text" class="form-control rounded-1" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+    </div>
+
+    <div class="second-col">
+        <%= link_to new_business_store_path(@business), class: 'btn btn-success rounded-1', style: "font-size: 13px" do %>
+            <i class="bi bi-plus-lg"></i>
+            Add store
+        <% end %>
+    </div>
+</div>
+
+<div class="container d-block py-4">
+    <div class="table-wrapper table-responsive card border-0 rounded-3">
+        <table class="table border">
+            <thead>
+                <tr class="fw-bold tb-header">
+                    <th scope="col py-5">Name</th>
+                    <th scope="col">Business</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Added On</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%= render @stores %>
+            </tbody>
+        </table>
+    </div>
+</div>
