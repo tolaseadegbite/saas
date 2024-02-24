@@ -30,4 +30,7 @@ class Store < ApplicationRecord
   # store products association
   has_many :store_products, dependent: :destroy
   has_many :products, through: :store_products, dependent: :destroy
+
+  # nested form nested attributes
+  accepts_nested_attributes_for :beds, allow_destroy: true, reject_if: :all_blank
 end
