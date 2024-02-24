@@ -39,6 +39,10 @@ class Product < ApplicationRecord
   belongs_to :user
   belongs_to :business
 
+  # store products association
+  has_many :store_products, dependent: :destroy
+  has_many :stores, through: :store_products
+
   # order products by name in ascending order
   scope :ordered, -> { where('name LIKE ?', "a%").order(:name) }
 

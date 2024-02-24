@@ -26,4 +26,8 @@ class Store < ApplicationRecord
 
   belongs_to :user
   belongs_to :business
+
+  # store products association
+  has_many :store_products, dependent: :destroy
+  has_many :products, through: :store_products, dependent: :destroy
 end
