@@ -2,6 +2,9 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
 
+// tom-select
+@import "tom-select/dist/css/tom-select.bootstrap5.min";
+
 // import components
 @import 'components/flash';
 @import 'components/side_nav';
@@ -120,5 +123,9 @@ td a {
 
   .navbar-app {
     width: 50%;
+  }
+
+  .devise-form {
+    max-width: 90% !important;
   }
 }

@@ -1,7 +1,7 @@
 <% provide(:title, "Editing #{@store.name} | #{@business.name}") %>
 
 <div class="container mt-3 w-50 mx-auto">
-    <%= link_to sanitize("&larr; Back to stores"), business_stores_path(@business) %>
+    <%= link_to sanitize("&larr; Back to #{@store.name}"), [@business, @store] %>
     <div class="header my-4">
         <h1 class="h4">
             Edit your store

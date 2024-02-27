@@ -18,7 +18,7 @@ gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
 gem "redis", "~> 4.0"
 gem "rails", "~> 7.0.8"
-gem "sidekiq", "6.5.6"
+# gem "sidekiq", "6.5.6"
 gem "sprockets-rails"
 gem "stimulus-rails"
 gem "turbo-rails"
@@ -51,3 +51,5 @@ group :test do
   gem "guard",                    "2.18.0"
   gem "guard-minitest",           "2.4.6"
 end
+
+gem "dockerfile-rails", ">= 1.6", :group => :development

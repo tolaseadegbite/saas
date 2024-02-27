@@ -1,0 +1,44 @@
+<% provide(:title, "#{@store.name} | #{@business.name}") %>
+
+<div class="container-fluid bg-white py-3 d-flex justify-content-between">
+    <div class="first-col d-flex align-items-center">
+        <div class="input">
+            <input type="text" class="form-control rounded-1" placeholder="Search product" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+    </div>
+
+    <div class="second-col">
+        <%= link_to edit_business_store_path(@business, @store), class: 'btn btn-success rounded-1', style: "font-size: 13px" do %>
+            <i class="bi bi-pencil-square"></i>
+            Edit store
+        <% end %>
+    </div>
+</div>
+
+
+<div class="container d-block py-4">
+    <h3>Store products</h3>
+    <div class="table-wrapper table-responsive card border-0 rounded-3">
+        <table class="table border">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Qty</th>
+                    <th scope="col">Code</th>
+                    <th scope="col">Created by</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% @store.store_products.each do |store_product| %>
+                <% product = store_product.product %>
+                <tr class="fw-normal">
+                    <td><%= link_to product.name, business_product_path(@business, product) %></td>
+                    <td><%= link_to store_product.quantity, business_product_path(@business, product) %></td>
+                    <td><%= link_to product.product_code, business_product_path(@business, product) %></td>
+                    <td><%= link_to product.user.email, business_product_path(@business, product) %></td>
+                </tr>
+            <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>

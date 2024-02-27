@@ -22,15 +22,15 @@
 #
 class Store < ApplicationRecord
   # validates presence, uniqueness, length and case-sensitivity of name attribute
-  validates :name, presence: true, uniqueness: {scope: :business_id, message: "Store  name must be unique"}, length: { minimum: 3, maximum: 255 }
+  validates :name, presence: true, uniqueness: {scope: :business_id, message: "Store name must be unique"}, length: { minimum: 3, maximum: 255 }
 
   belongs_to :user
   belongs_to :business
 
   # store products association
-  has_many :store_products, dependent: :destroy
+  has_many :store_products, inverse_of: :store, dependent: :destroy
   has_many :products, through: :store_products, dependent: :destroy
 
   # nested form nested attributes
-  accepts_nested_attributes_for :beds, allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :store_products, reject_if: :all_blank, allow_destroy: true
 end

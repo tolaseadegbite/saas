@@ -11,8 +11,9 @@
 #
 # Indexes
 #
-#  index_store_products_on_product_id  (product_id)
-#  index_store_products_on_store_id    (store_id)
+#  index_store_products_on_product_id               (product_id)
+#  index_store_products_on_product_id_and_store_id  (product_id,store_id) UNIQUE
+#  index_store_products_on_store_id                 (store_id)
 #
 # Foreign Keys
 #
@@ -20,6 +21,8 @@
 #  fk_rails_...  (store_id => stores.id)
 #
 class StoreProduct < ApplicationRecord
+  validates :product_id, presence: true, uniqueness: {scope: :store_id, message: "Product must be unique"}
+  
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
   belongs_to :product
   belongs_to :store

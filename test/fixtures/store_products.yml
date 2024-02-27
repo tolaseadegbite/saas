@@ -11,8 +11,9 @@
 #
 # Indexes
 #
-#  index_store_products_on_product_id  (product_id)
-#  index_store_products_on_store_id    (store_id)
+#  index_store_products_on_product_id               (product_id)
+#  index_store_products_on_product_id_and_store_id  (product_id,store_id) UNIQUE
+#  index_store_products_on_store_id                 (store_id)
 #
 # Foreign Keys
 #

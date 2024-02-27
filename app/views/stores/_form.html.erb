@@ -1,16 +1,47 @@
-<%= form_with model: [business, store] do |f| %>
-    <%= render 'shared/error_messages', f: f %>
+<div data-controller='nested-form'>
+    <%= form_with model: [business, store] do |f| %>
+        <%= render 'shared/error_messages', f: f %>
 
-    <div class="mb-3">
-        <%= f.label :name, class: 'fw-bold mb-2' %>
-        <%= f.text_field :name, class: 'form-control' %>
-    </div>
+        <div class="mb-3">
+            <%= f.text_field :name, placeholder: 'Store name', class: 'form-control' %>
+        </div>
 
-    <%= link_to business_stores_path(@business), class: "btn btn-light rounded-1 border me-2" do %>
-        <%= image_tag "x.png", width: "19" %>
+        <!--<div data-controller="tom-select">
+            <small>Add products to store</small>
+            <%#= f.select :product_ids, @products, {}, { multiple: true, id: "select-products", class: 'mb-3 form-control' } %>
+        </div>-->
+
+        <div class="d-block w-100 mt-3">
+            <h6><small>Add store products:</small></h6>
+            <hr>
+        </div>
+
+        <%# Custom logic for nested form %>
+        <template data-nested-form-target="template">
+            <%= f.fields_for :store_products, StoreProduct.new, child_index: 'NEW_RECORD' do |store_product_fields| %>
+                <%= render "stores/store_store_product_form", f: store_product_fields %>
+            <% end %>
+        </template>
+
+        <% unless f.object.new_record? %>
+            <%= f.fields_for :store_products do |store_product_fields| %>
+                <%= render "stores/store_store_product_form", f: store_product_fields %>
+            <% end %>
+        <% end %>
+
+        <!-- Inserted elements will be injected before that target. -->
+        <div data-nested-form-target="target"></div>
+
+        <button type="button" class="btn btn-success w-100 mb-3" style="font-size: 10px;" data-action="nested-form#add">Add Product</button>
+
+        <div class="submit">
+            <%= link_to business_stores_path(@business), class: "btn btn-light rounded-1 border me-2" do %>
+                <%= image_tag "x.png", width: "19" %>
+            <% end %>
+
+            <%= button_tag type: 'Submit', class: "btn btn-success rounded-1 border" do %>
+                <%= image_tag "check.png", width: "19" %>
+            <% end %>
+        </div>
     <% end %>
-
-    <%= button_tag type: 'Submit', class: "btn btn-success rounded-1 border" do %>
-        <%= image_tag "check.png", width: "19" %>
-    <% end %>
-<% end %>
+</div>

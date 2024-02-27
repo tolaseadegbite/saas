@@ -10,5 +10,11 @@ application.register("business-form", BusinessFormController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import NestedFormController from "./nested_form_controller"
+application.register("nested-form", NestedFormController)
+
 import RemovalsController from "./removals_controller"
 application.register("removals", RemovalsController)
+
+import TomSelectController from "./tom_select_controller"
+application.register("tom-select", TomSelectController)

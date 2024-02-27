@@ -1,0 +1,37 @@
+<div class="container d-block py-4">
+    <h1 class="h2"><%= @product.name %></h1>
+    <p class="text-muted">created by: <%= @product.user.email %></p>
+
+    <div class="product-data my-5">
+        <h5>Product data</h5>
+
+        <table class="table table-bordered rounded overflow-hidden my-3">
+            <thead>
+                <tr>
+                    <th scope="col">Code</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">description</th>
+                    <% if @product.stores.any? %>
+                        <th scope="col">Store</th>
+                    <% end %>
+                    <th scope="col">Uploaded by</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="fw-normal">
+                    <td><%= @product.product_code %></td>
+                    <td><%= @product.unit_price %></td>
+                    <td><%= @product.description %></td>
+                    <% if @product.stores.present? %>
+                    <td>
+                        <% @product.stores.each do |store| %>
+                            <%= link_to store.name, business_store_path(@business, store), class: 'd-inline-block' %>,
+                        <% end %>
+                    </td>
+                    <% end %>
+                    <td><%= @product.user.email %></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

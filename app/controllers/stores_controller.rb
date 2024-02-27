@@ -3,6 +3,7 @@ class StoresController < ApplicationController
     before_action :find_business
     before_action :find_store, only: [:show, :edit, :update, :destroy]
     before_action :find_correct_user, only: [:show, :edit, :update, :destroy]
+    before_action :find_products, only: [:new, :edit]
 
     def index
         @stores = @business.stores.includes(:business, :user)
@@ -14,6 +15,7 @@ class StoresController < ApplicationController
 
     def new
         @store = Store.new
+        @store.store_products.build
     end
 
     def create
@@ -29,11 +31,11 @@ class StoresController < ApplicationController
     end
 
     def edit
-        
+        @store.store_products.build
     end
 
     def update
-        if @store .update(store_params)
+        if @store.update(store_params)
             respond_to do |format|
                 format.html { redirect_to business_store_url(@business, @store), notice: 'store successfully updated' }
             end
@@ -52,7 +54,7 @@ class StoresController < ApplicationController
     private
 
     def store_params
-        params.require(:store).permit(:name, :description, :quantity, :unit_price)
+        params.require(:store).permit!
     end
 
     def find_store
@@ -61,6 +63,11 @@ class StoresController < ApplicationController
 
     def find_business
         @business ||= Business.find(params[:business_id])
+    end
+
+    def find_products
+        @business = Business.find(params[:business_id])
+        @products ||= @business.products.pluck(:name, :id)
     end
 
     def find_correct_user
