@@ -1,0 +1,19 @@
+<tr class="align-middle">
+    <td><%= link_to customer.name, business_customer_path(@business, customer) %></td>
+    <td><%= link_to customer.email, business_customer_path(@business, customer) %></td>
+    <td><%= link_to customer.phone_number, business_customer_path(@business, customer) %></td>
+    <td><%= link_to customer.business.name, business_customer_path(@business, customer) %></td>
+    <td><%= link_to customer.user.fullname, business_customer_path(@business, customer) %></td>
+    <td><%= link_to customer.created_at.strftime("%m/%d/%Y"), business_customer_path(@business, customer) %></td>
+    <td>
+        <div class="d-flex">
+
+            <%= link_to business_customer_path(@business, customer), data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" }, class: 'btn rounded-1 me-2', style: 'background: hsl(0, 6%, 93%)' do %>
+                <i class="bi bi-trash fs-5 text-secondary"></i>
+            <% end %>
+            <%= link_to edit_business_customer_path(@business, customer), class: 'btn rounded-1', style: 'background: hsl(0, 6%, 93%)' do %>
+                <i class="bi bi-pencil-square fs-5 text-secondary"></i>
+            <% end %>
+        </div>
+    </td>
+</tr>

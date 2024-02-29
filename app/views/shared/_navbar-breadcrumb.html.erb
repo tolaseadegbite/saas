@@ -30,7 +30,18 @@
             <%= link_to @business.name, @business %> <i class="bi bi-chevron-right" style="font-size: 10px"></i> <%= link_to 'All stores', business_stores_path(@business) %> <i class="bi bi-chevron-right" style="font-size: 10px"></i> <i>New store</i>
         <% elsif controller.controller_name == 'stores' && action_name == 'edit' %>
              <%= link_to @business.name, @business %> <i class="bi bi-chevron-right" style="font-size: 10px"></i> <%= link_to 'All stores', business_stores_path(@business) %> <i class="bi bi-chevron-right" style="font-size: 10px"></i> <%= link_to @store.name, [@business, @store] %> <i class="bi bi-chevron-right" style="font-size: 10px"></i> <i>Edit store</i>
-        <% end %>
         <%# store links ends %>
+
+        <%# customer links start %>
+        <% elsif controller.controller_name == 'customers' && action_name == 'index' %>
+            <%= link_to @business.name, @business %> <i class="bi bi-chevron-right" style="font-size: 10px"></i> <i><%= pluralize(@business.customers_count, 'customer') %></i>
+        <% elsif controller.controller_name == 'customers' && action_name == 'show' %>
+            <%= link_to @business.name, @business %> <i class="bi bi-chevron-right" style="font-size: 10px"></i> <%= link_to 'All customers', business_customers_path(@business) %> <i class="bi bi-chevron-right" style="font-size: 10px"></i> <i><%= @customer.name %> </i>
+        <% elsif controller.controller_name == 'customers' && action_name == 'new' %>
+            <%= link_to @business.name, @business %> <i class="bi bi-chevron-right" style="font-size: 10px"></i> <%= link_to 'All customers', business_customers_path(@business) %> <i class="bi bi-chevron-right" style="font-size: 10px"></i> <i>New customer</i>
+        <% elsif controller.controller_name == 'customers' && action_name == 'edit' %>
+             <%= link_to @business.name, @business %> <i class="bi bi-chevron-right" style="font-size: 10px"></i> <%= link_to 'All customers', business_customers_path(@business) %> <i class="bi bi-chevron-right" style="font-size: 10px"></i> <%= link_to @customer.name, [@business, @store] %> <i class="bi bi-chevron-right" style="font-size: 10px"></i> <i>Edit customer</i>
+        <%# customer links end %>
+        <% end %>
     </p>
 </li>
