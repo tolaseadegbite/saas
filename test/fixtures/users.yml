@@ -5,6 +5,7 @@
 #  id                     :bigint           not null, primary key
 #  admin                  :boolean          default(FALSE), not null
 #  businesses_count       :integer          default(0), not null
+#  customers_count        :integer          default(0), not null
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  firstname              :string           not null
@@ -38,6 +39,7 @@ tolase:
   surname: Kelvin
   businesses_count: 2
   products_count: 2
+  customers_count: 2
 
 john:
   email: john@example.com
@@ -47,3 +49,4 @@ john:
   surname: Doe
   businesses_count: 2
   products_count: 2
+  customers_count: 2

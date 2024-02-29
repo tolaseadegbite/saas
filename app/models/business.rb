@@ -2,16 +2,17 @@
 #
 # Table name: businesses
 #
-#  id             :bigint           not null, primary key
-#  business_code  :string           not null
-#  description    :text
-#  name           :string
-#  products_count :integer          default(0), not null
-#  stores_count   :integer          default(0), not null
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  category_id    :bigint           not null
-#  user_id        :bigint           not null
+#  id              :bigint           not null, primary key
+#  business_code   :string           not null
+#  customers_count :integer          default(0), not null
+#  description     :text
+#  name            :string
+#  products_count  :integer          default(0), not null
+#  stores_count    :integer          default(0), not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  category_id     :bigint           not null
+#  user_id         :bigint           not null
 #
 # Indexes
 #
@@ -36,6 +37,7 @@ class Business < ApplicationRecord
 
   has_many :products, dependent: :destroy, counter_cache: :products_count
   has_many :stores, dependent: :destroy, counter_cache: :stores_count
+  has_many :customers, dependent: :destroy, counter_cache: :customers_count
 
   scope :ordered, -> { order(id: :desc) }
 

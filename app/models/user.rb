@@ -5,6 +5,7 @@
 #  id                     :bigint           not null, primary key
 #  admin                  :boolean          default(FALSE), not null
 #  businesses_count       :integer          default(0), not null
+#  customers_count        :integer          default(0), not null
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  firstname              :string           not null
@@ -41,6 +42,7 @@ class User < ApplicationRecord
   has_many :businesses, dependent: :destroy, counter_cache: :businesses_count
   has_many :products, dependent: :destroy, counter_cache: :products_count
   has_many :stores, dependent: :destroy, counter_cache: :stores_count
+  has_many :customers, dependent: :destroy, counter_cache: :customers_count
 
   # has_one_attached :avatar
 end

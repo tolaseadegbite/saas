@@ -5,6 +5,7 @@
 #  id                     :bigint           not null, primary key
 #  admin                  :boolean          default(FALSE), not null
 #  businesses_count       :integer          default(0), not null
+#  customers_count        :integer          default(0), not null
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  firstname              :string           not null
