@@ -17,7 +17,8 @@
 
 
 <div class="container d-block py-4">
-    <h3>Store products</h3>
+    <%= link_to sanitize("&larr; Back to stores"), business_stores_path(@business) %>
+    <h3 class="mt-1">Store products</h3>
     <div class="table-wrapper table-responsive card border-0 rounded-3">
         <table class="table border">
             <thead>

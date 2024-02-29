@@ -21,10 +21,3 @@
 #  fk_rails_...  (store_id => stores.id)
 #
 
-one:
-  product: one
-  store: one
-
-two:
-  product: two
-  store: two

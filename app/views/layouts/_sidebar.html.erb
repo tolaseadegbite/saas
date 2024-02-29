@@ -29,7 +29,7 @@
                 
                 <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body p-0">
-                        <h6 class="py-2 px-2" style="font-size: 11px;">BUSINESSES - <%= current_user.businesses.count %></h6>
+                        <h6 class="py-2 px-2" style="font-size: 11px;"> <span class="text-capitalize"><%= pluralize(current_user.businesses_count, 'business') %></span></h6>
 
                         <div class="input-group input-group-sm px-2 text-center">
                             <span class="input-group-text border-0" id="basic-addon1">
@@ -84,16 +84,16 @@
                 </li>
 
                 <li class="">
-                    <%= link_to business_stores_path(@current_business), class: 'text-decoration-none px-3 py-2 d-block' do %>
-                        <i class="bi bi-shop me-1"></i>
-                        Stores
+                    <%= link_to business_products_path(@current_business), class: 'text-decoration-none px-3 py-2 d-block' do %>
+                        <i class="bi bi-cart4 me-1"></i>
+                        Products
                     <% end %>
                 </li>
 
                 <li class="">
-                    <%= link_to business_products_path(@current_business), class: 'text-decoration-none px-3 py-2 d-block' do %>
-                        <i class="bi bi-cart4 me-1"></i>
-                        Products
+                    <%= link_to business_stores_path(@current_business), class: 'text-decoration-none px-3 py-2 d-block' do %>
+                        <i class="bi bi-shop me-1"></i>
+                        Stores
                     <% end %>
                 </li>
 

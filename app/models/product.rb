@@ -6,7 +6,6 @@
 #  description  :text
 #  name         :string           not null
 #  product_code :string           not null
-#  quantity     :integer          not null
 #  unit_price   :decimal(10, 2)   not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
@@ -31,13 +30,13 @@ class Product < ApplicationRecord
   validates :name, presence: true, uniqueness: { case_sensitive: false, message: "Product name must be unique" }, length: { minimum: 3, maximum: 50 }
 
   # validates presence and numericality of quantity (only integer values greater than zero will be accepted)
-  validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  # validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
 
   # validates presence and numericality of unit price (only values greater than zero will be accepted)
   validates :unit_price, presence: true, numericality: { greater_than: 0 }
 
-  belongs_to :user
-  belongs_to :business
+  belongs_to :user, counter_cache: :products_count
+  belongs_to :business, counter_cache: :products_count
 
   # store products association
   has_many :store_products, dependent: :destroy

@@ -1,6 +1,6 @@
 <tr class="align-middle">
     <td><%= link_to store.name, business_store_path(@business, store) %></td>
-    <td><%= link_to store.store_products.count, business_store_path(@business, store) %></td>
+    <td><%= link_to store.store_products_count, business_store_path(@business, store) %></td>
     <td><%= link_to store.business.name, business_store_path(@business, store) %></td>
     <td><%= link_to store.user.fullname, business_store_path(@business, store) %></td>
     <td><%= link_to store.created_at.strftime("%m/%d/%Y"), business_store_path(@business, store) %></td>

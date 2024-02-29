@@ -3,7 +3,7 @@ class StoresController < ApplicationController
     before_action :find_business
     before_action :find_store, only: [:show, :edit, :update, :destroy]
     before_action :find_correct_user, only: [:show, :edit, :update, :destroy]
-    before_action :find_products, only: [:new, :edit]
+    before_action :find_products
 
     def index
         @stores = @business.stores.includes(:business, :user)

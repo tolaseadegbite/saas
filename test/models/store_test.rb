@@ -2,12 +2,13 @@
 #
 # Table name: stores
 #
-#  id          :bigint           not null, primary key
-#  name        :string           not null
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  business_id :bigint           not null
-#  user_id     :bigint           not null
+#  id                   :bigint           not null, primary key
+#  name                 :string           not null
+#  store_products_count :integer          default(0), not null
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  business_id          :bigint           not null
+#  user_id              :bigint           not null
 #
 # Indexes
 #

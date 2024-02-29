@@ -6,7 +6,6 @@
 #  description  :text
 #  name         :string           not null
 #  product_code :string           not null
-#  quantity     :integer          not null
 #  unit_price   :decimal(10, 2)   not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
@@ -30,7 +29,7 @@ class ProductTest < ActiveSupport::TestCase
   def setup
     @user = users(:tolase)
     @business = businesses(:business_1)
-    @product = @business.products.build(name: 'Elepaq Generator', description: 'Nothing much', quantity: 1, unit_price: 550000.00, product_code: 'sh98ss', user: @user)
+    @product = @business.products.build(name: 'Elepaq Generator', description: 'Nothing much', unit_price: 550000.00, product_code: 'sh98ss', user: @user)
   end
 
   test 'product must be valid' do

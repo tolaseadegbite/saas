@@ -1,8 +1,20 @@
 <div class="container d-block py-4">
-    <h1 class="h2"><%= @product.name %></h1>
-    <p class="text-muted">created by: <%= @product.user.email %></p>
+    <div class="d-flex justify-content-between">
+        <div>
+            <%= link_to sanitize("&larr; Back to products"), business_products_path(@business) %>
+            <h1 class="h2 mt-1"><%= @product.name %></h1>
+            <p class="text-muted">created by: <%= @product.user.email %></p>
+        </div>
 
-    <div class="product-data my-5">
+        <div>
+            <%= link_to edit_business_product_path(@business, @product), class: 'btn btn-success rounded-1', style: "font-size: 13px" do %>
+                <i class="bi bi-pencil-square"></i>
+                Edit product
+            <% end %>
+        </div>
+    </div>
+
+    <div class="product-data my-3">
         <h5>Product data</h5>
 
         <table class="table table-bordered rounded overflow-hidden my-3">
@@ -12,7 +24,7 @@
                     <th scope="col">Price</th>
                     <th scope="col">description</th>
                     <% if @product.stores.any? %>
-                        <th scope="col">Store</th>
+                        <th scope="col">Stores</th>
                     <% end %>
                     <th scope="col">Uploaded by</th>
                 </tr>

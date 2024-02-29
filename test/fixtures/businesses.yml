@@ -2,14 +2,16 @@
 #
 # Table name: businesses
 #
-#  id            :bigint           not null, primary key
-#  business_code :string           not null
-#  description   :text
-#  name          :string
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  category_id   :bigint           not null
-#  user_id       :bigint           not null
+#  id             :bigint           not null, primary key
+#  business_code  :string           not null
+#  description    :text
+#  name           :string
+#  products_count :integer          default(0), not null
+#  stores_count   :integer          default(0), not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  category_id    :bigint           not null
+#  user_id        :bigint           not null
 #
 # Indexes
 #
@@ -29,6 +31,7 @@ business_1:
   category: cat_1
   user: tolase
   business_code: dg3823
+  products_count: 2
 
 business_2:
   name: Tolase Electronics
@@ -36,3 +39,4 @@ business_2:
   category: cat_2
   user: tolase
   business_code: dg3824
+  products_count: 2

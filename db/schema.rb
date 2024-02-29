@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_27_214729) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_29_123345) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_27_214729) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "business_code", null: false
+    t.integer "products_count", default: 0, null: false
+    t.integer "stores_count", default: 0, null: false
     t.index ["category_id"], name: "index_businesses_on_category_id"
     t.index ["name"], name: "index_businesses_on_name", unique: true
     t.index ["user_id"], name: "index_businesses_on_user_id"
@@ -39,7 +41,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_27_214729) do
   create_table "products", force: :cascade do |t|
     t.string "name", null: false
     t.text "description"
-    t.integer "quantity", null: false
     t.decimal "unit_price", precision: 10, scale: 2, null: false
     t.string "product_code", null: false
     t.bigint "user_id", null: false
@@ -68,6 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_27_214729) do
     t.bigint "business_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "store_products_count", default: 0, null: false
     t.index ["business_id"], name: "index_stores_on_business_id"
     t.index ["name"], name: "index_stores_on_name", unique: true
     t.index ["user_id"], name: "index_stores_on_user_id"
@@ -85,6 +87,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_27_214729) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "phone_number"
+    t.integer "businesses_count", default: 0, null: false
+    t.integer "stores_count", default: 0, null: false
+    t.integer "products_count", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["phone_number"], name: "index_users_on_phone_number", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

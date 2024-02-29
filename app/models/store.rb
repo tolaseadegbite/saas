@@ -2,12 +2,13 @@
 #
 # Table name: stores
 #
-#  id          :bigint           not null, primary key
-#  name        :string           not null
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  business_id :bigint           not null
-#  user_id     :bigint           not null
+#  id                   :bigint           not null, primary key
+#  name                 :string           not null
+#  store_products_count :integer          default(0), not null
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  business_id          :bigint           not null
+#  user_id              :bigint           not null
 #
 # Indexes
 #
@@ -24,8 +25,8 @@ class Store < ApplicationRecord
   # validates presence, uniqueness, length and case-sensitivity of name attribute
   validates :name, presence: true, uniqueness: {scope: :business_id, message: "Store name must be unique"}, length: { minimum: 3, maximum: 255 }
 
-  belongs_to :user
-  belongs_to :business
+  belongs_to :user, counter_cache: :stores_count
+  belongs_to :business, counter_cache: :stores_count
 
   # store products association
   has_many :store_products, inverse_of: :store, dependent: :destroy

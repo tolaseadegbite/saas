@@ -6,7 +6,6 @@
 #  description  :text
 #  name         :string           not null
 #  product_code :string           not null
-#  quantity     :integer          not null
 #  unit_price   :decimal(10, 2)   not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
@@ -28,7 +27,7 @@
 product_1:
   name: Brown belt
   description: A brown belt
-  quantity: 1
+  # quantity: 1
   unit_price: 3000.00
   product_code: dg287e
   user: tolase
@@ -37,7 +36,7 @@ product_1:
 product_2:
   name: Mikano Generator
   description: Big Mikano gen
-  quantity: 1
+  # quantity: 1
   unit_price: 3000000.00
   product_code: dg286e
   user: tolase

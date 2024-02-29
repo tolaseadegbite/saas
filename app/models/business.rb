@@ -2,14 +2,16 @@
 #
 # Table name: businesses
 #
-#  id            :bigint           not null, primary key
-#  business_code :string           not null
-#  description   :text
-#  name          :string
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  category_id   :bigint           not null
-#  user_id       :bigint           not null
+#  id             :bigint           not null, primary key
+#  business_code  :string           not null
+#  description    :text
+#  name           :string
+#  products_count :integer          default(0), not null
+#  stores_count   :integer          default(0), not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  category_id    :bigint           not null
+#  user_id        :bigint           not null
 #
 # Indexes
 #
@@ -30,10 +32,10 @@ class Business < ApplicationRecord
   validates :category_id, presence: :true
 
   belongs_to :category
-  belongs_to :user
+  belongs_to :user, counter_cache: :businesses_count
 
-  has_many :products, dependent: :destroy
-  has_many :stores, dependent: :destroy
+  has_many :products, dependent: :destroy, counter_cache: :products_count
+  has_many :stores, dependent: :destroy, counter_cache: :stores_count
 
   scope :ordered, -> { order(id: :desc) }
 
