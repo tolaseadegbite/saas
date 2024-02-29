@@ -3,7 +3,7 @@
         <div>
             <%= link_to sanitize("&larr; Back to products"), business_products_path(@business) %>
             <h1 class="h2 mt-1"><%= @product.name %></h1>
-            <p class="text-muted">created by: <%= @product.user.email %></p>
+            <p class="text-muted">Uploaded by: <%= @product.user.email %></p>
         </div>
 
         <div>
@@ -22,28 +22,85 @@
                 <tr>
                     <th scope="col">Code</th>
                     <th scope="col">Price</th>
-                    <th scope="col">description</th>
+                    <th scope="col">Description</th>
+                    <!--
                     <% if @product.stores.any? %>
                         <th scope="col">Stores</th>
                     <% end %>
-                    <th scope="col">Uploaded by</th>
+                    -->
                 </tr>
             </thead>
             <tbody>
                 <tr class="fw-normal">
                     <td><%= @product.product_code %></td>
                     <td><%= @product.unit_price %></td>
-                    <td><%= @product.description %></td>
+                    <% if @product.description.present? %>
+                        <td><%= @product.description %></td>
+                    <% else %>
+                        <td>Not available</td>
+                    <% end %>
+                    <!--
                     <% if @product.stores.present? %>
                     <td>
                         <% @product.stores.each do |store| %>
                             <%= link_to store.name, business_store_path(@business, store), class: 'd-inline-block' %>,
                         <% end %>
                     </td>
+                    -->
                     <% end %>
-                    <td><%= @product.user.email %></td>
                 </tr>
             </tbody>
         </table>
     </div>
+
+    <% if @product.stores.present? %>
+        <h5 class="mt-5 my-3">This product is available in following stores</h5>
+
+        <div class="table-wrapper table-responsive card border-0 rounded-3">
+            <table class="table border">
+                <thead>
+                    <tr class="fw-bold tb-header">
+                        <th scope="col py-5">Name</th>
+                        <th scope="col py-5">Product Qty</th>
+                        <th scope="col">Business</th>
+                        <th scope="col">User</th>
+                        <th scope="col">Added On</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @product.store_products.each do |store_product| %>
+                        <% product = store_product.product %>
+                        <% store = store_product.store %>
+
+                        <tr class="align-middle">
+                            <td><%= link_to store.name, business_store_path(@business, store) %></td>
+                            <td><%= link_to store_product.quantity, business_store_path(@business, store) %></td>
+                            <td><%= link_to store.business.name, business_store_path(@business, store) %></td>
+                            <td><%= link_to store.user.fullname, business_store_path(@business, store) %></td>
+                            <td><%= link_to store.created_at.strftime("%m/%d/%Y"), business_store_path(@business, store) %></td>
+                            <td>
+                                <div class="d-flex">
+
+                                    <%= link_to business_store_path(@business, store), data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" }, class: 'btn rounded-1 me-2', style: 'background: hsl(0, 6%, 93%)' do %>
+                                        <i class="bi bi-trash fs-5 text-secondary"></i>
+                                    <% end %>
+                                    <%= link_to edit_business_store_path(@business, store), class: 'btn rounded-1', style: 'background: hsl(0, 6%, 93%)' do %>
+                                        <i class="bi bi-pencil-square fs-5 text-secondary"></i>
+                                    <% end %>
+                                </div>
+                            </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    <% else %>
+      <div class="empty-state text-center mt-5">
+          <%= image_tag 'no-results', size: "100" %>
+          <p class="empty-state__text mt-3" style="color:purple">
+              This product is not available in any of your stores
+          </p>
+      </div>
+    <% end %>
 </div>

@@ -29,7 +29,7 @@ class Store < ApplicationRecord
   belongs_to :business, counter_cache: :stores_count
 
   # store products association
-  has_many :store_products, inverse_of: :store, dependent: :destroy
+  has_many :store_products, inverse_of: :store, dependent: :destroy, counter_cache: :store_products_count
   has_many :products, through: :store_products, dependent: :destroy
 
   # nested form nested attributes

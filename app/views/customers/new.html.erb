@@ -1,0 +1,14 @@
+<% provide(:title, "New Customer | #{@business.name}") %>
+
+<div class="container mt-3 w-50 mx-auto">
+    <%= link_to sanitize("&larr; Back to customers"), business_customers_path(@business) %>
+    <div class="header my-4">
+        <h1 class="h4">
+            New Customer
+        </h1>
+    </div>
+
+    <div class="wrapper py-4 px-3 bg-white border border-light-emphasis">
+        <%= render 'form', business: @business, customer: @customer %>
+    </div>
+</div>

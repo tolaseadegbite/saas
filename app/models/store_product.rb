@@ -25,5 +25,5 @@ class StoreProduct < ApplicationRecord
   
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
   belongs_to :product
-  belongs_to :store
+  belongs_to :store, counter_cache: :store_products_count
 end

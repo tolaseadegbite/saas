@@ -3,7 +3,7 @@
 <div class="container-fluid bg-white py-3 d-flex justify-content-between">
     <div class="first-col d-flex align-items-center">
         <div class="input">
-            <input type="text" class="form-control rounded-1" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            <input type="text" class="form-control rounded-1" placeholder="Store name" aria-label="Store name" aria-describedby="basic-addon1">
         </div>
     </div>
 
@@ -16,14 +16,19 @@
 </div>
 
 <div class="container d-block py-4">
+    <h1 class="mb-3 h3">Stores</h1>
     <div class="table-wrapper table-responsive card border-0 rounded-3">
         <table class="table border">
             <thead>
                 <tr class="fw-bold tb-header">
                     <th scope="col py-5">Name</th>
-                    <th scope="col py-5">Nos of products</th>
+                    <% if controller.controller_name == 'products' && action_name == 'show' %>
+                        <th scope="col py-5">Quantity</th>
+                    <% else %>
+                        <th scope="col py-5">Nos of products</th>
+                    <% end %>
                     <th scope="col">Business</th>
-                    <th scope="col">User</th>
+                    <th scope="col">Uploaded by</th>
                     <th scope="col">Added On</th>
                     <th scope="col">Actions</th>
                 </tr>
