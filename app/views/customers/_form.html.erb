@@ -1,7 +1,7 @@
 <%= form_with model: [business, customer] do |f| %>
     <%= render 'shared/error_messages', f: f %>
 
-    <div class="d-flex justify-content-between bg-white mb-2 align-items-center px-2 py-1 rounded gap-1">
+    <div class="d-lg-flex justify-content-between bg-white mb-2 align-items-center px-2 py-1 rounded gap-1">
         <div class="w-100">
             <%= f.text_field :name, autofocus: true, placeholder: 'Name', class: 'form-control rounded-1' %>
         </div>

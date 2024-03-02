@@ -1,0 +1,7 @@
+<div class="empty-state">
+    <p class="text">
+        You haven't created any customers yet!
+    </p>
+
+    <%= link_to 'Add customer', new_business_customer_path(@business), class: 'btn btn-success rounded-1', style: "font-size: 13px", data: { turbo_frame: dom_id(Customer.new) } %>
+</div>

@@ -1,2 +1,8 @@
 <%= turbo_stream.remove @customer %>
 <%= render_turbo_stream_flash_messages %>
+
+<% unless @business.customers.exists? %>
+  <%= turbo_stream.update Customer.new do %>
+    <%= render "customers/empty_state" %>
+  <% end %>
+<% end %>

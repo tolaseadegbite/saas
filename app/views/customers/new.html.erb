@@ -9,7 +9,7 @@
     </div>
 
     <%= turbo_frame_tag @customer do %>
-        <div class="wrapper pt-3 bg-white">
+        <div class="wrapper py-1 mb-2 bg-white rounded shadow-sm">
             <%= render 'form', business: @business, customer: @customer %>
         </div>
     <% end %>

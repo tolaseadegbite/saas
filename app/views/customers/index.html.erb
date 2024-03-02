@@ -27,13 +27,18 @@
             <% end %>
         </div>
     </div>
-
-    <%= turbo_frame_tag Customer.new %>
 </div>
 
 
 <div class="container d-block py-4">
     <h1 class="mb-3 h3">Customers</h1>
+    
+    <%= turbo_frame_tag Customer.new do %>
+        <% if @customers.none? %>
+            <%= render 'customers/empty_state' %>
+        <% end %>
+    <% end %>
+    
     <%= turbo_frame_tag "customers" do %>
         <%= render @customers %>
     <% end %>
