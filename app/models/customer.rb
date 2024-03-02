@@ -28,7 +28,7 @@ class Customer < ApplicationRecord
   before_save :downcase_email
 
   # validates presence, length and uniqueness of name in a particular business
-  validates :name, presence: true, uniqueness: {scope: :business_id, message: "Name must be unique"}, length: { minimum: 3, maximum: 255 }
+  validates :name, presence: true, uniqueness: {scope: :business_id, message: "Name must be unique"}, length: { minimum: 3, maximum: 50 }
 
   # valid email format
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -42,6 +42,9 @@ class Customer < ApplicationRecord
   # associations
   belongs_to :user, counter_cache: :customers_count
   belongs_to :business, counter_cache: :customers_count
+
+  # customers should be ordered in descending order
+  scope :ordered, -> { order(id: :desc) }
 
   private
 

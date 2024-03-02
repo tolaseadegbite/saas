@@ -98,6 +98,7 @@ td a {
   // padding: 16px; 
 }
 
+
 @media(max-width: 767px){
   .fixed-sidebar-margin {
     margin-left: 0;
@@ -128,4 +129,24 @@ td a {
   .devise-form {
     max-width: 90% !important;
   }
+
+  .header {
+    display: block !important;
+
+    .first-col, .input {
+      width: 100% !important;
+    }
+
+    .second-col {
+      .header-btn {
+        width: 100% !important;
+        margin-top: 1em;
+      }
+    }
+  }
+  
+  .form {
+    display: block !important;
+  }
+
 }

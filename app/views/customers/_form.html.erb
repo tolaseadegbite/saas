@@ -1,23 +1,25 @@
 <%= form_with model: [business, customer] do |f| %>
     <%= render 'shared/error_messages', f: f %>
 
-    <div class="form d-md-flex mb-3">
-        <div class="mx-1">
+    <div class="d-flex justify-content-between bg-white mb-2 align-items-center px-2 py-1 rounded gap-1">
+        <div class="w-100">
             <%= f.text_field :name, autofocus: true, placeholder: 'Name', class: 'form-control rounded-1' %>
         </div>
-        <div>
-            <%= f.text_field :email, placeholder: 'Email', class: 'form-control rounded-1 price-field' %>
+
+        <div class="w-100">
+            <%= f.email_field :email, placeholder: 'Email', class: 'form-control rounded-1 price-field' %>
         </div>
-        <div class="ms-1">
+
+        <div class="w-100">
             <%= f.text_field :phone_number, placeholder: 'Phone number', class: 'form-control rounded-1 price-field' %>
         </div>
+
+        <%= link_to business_customers_path(@business), class: "btn btn-light rounded-1 border" do %>
+            <%= image_tag "x.png", width: "19" %>
+        <% end %>
+
+        <%= button_tag type: 'Submit', class: "btn btn-success rounded-1 border" do %>
+            <%= image_tag "check.png", width: "19" %>
+        <% end %>
     </div>
-
-    <%= link_to business_customers_path(@business), class: "btn btn-light rounded-1 border me-2" do %>
-        <%= image_tag "x.png", width: "19" %>
-    <% end %>
-
-    <%= button_tag type: 'Submit', class: "btn btn-success rounded-1 border" do %>
-        <%= image_tag "check.png", width: "19" %>
-    <% end %>
 <% end %>

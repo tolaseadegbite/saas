@@ -1,0 +1,5 @@
+<%= turbo_stream.prepend "customers" do %>
+    <%= render @customer, business: @business %>
+<% end %>
+<%= turbo_stream.update Customer.new, "" %>
+<%= render_turbo_stream_flash_messages %>

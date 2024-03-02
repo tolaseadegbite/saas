@@ -8,7 +8,9 @@
         </h1>
     </div>
 
-    <div class="wrapper py-4 px-3 bg-white border border-light-emphasis">
-        <%= render 'form', business: @business, customer: @customer %>
-    </div>
+    <%= turbo_frame_tag @customer do %>
+        <div class="wrapper pt-3 bg-white">
+            <%= render 'form', business: @business, customer: @customer %>
+        </div>
+    <% end %>
 </div>

@@ -5,7 +5,7 @@ class CustomersController < ApplicationController
     before_action :find_correct_user, only: [:show, :edit, :update, :destroy]
 
     def index
-        @customers = @business.customers.includes(:business, :user)
+        @customers = @business.customers.ordered.includes(:business, :user)
     end
 
     def show
@@ -22,6 +22,7 @@ class CustomersController < ApplicationController
         if @customer.save
             respond_to do |format|
                 format.html { redirect_to business_customers_url(@business), notice: 'Customer successfully created' }
+                format.turbo_stream { flash.now[:notice] = 'Customer created!' }
             end
         else
             render :new, status: :unprocessable_entity
@@ -36,6 +37,7 @@ class CustomersController < ApplicationController
         if @customer .update(customer_params)
             respond_to do |format|
                 format.html { redirect_to business_customers_url(@business), notice: 'Customer successfully updated' }
+                format.turbo_stream { flash.now[:notice] = 'Customer successfully updated!' }
             end
         else
             render :edit, status: :unprocessable_entity
@@ -46,6 +48,7 @@ class CustomersController < ApplicationController
         @customer.destroy
         respond_to do |format|
             format.html { redirect_to business_customers_url(@business), notice: 'Customer deleted!' }
+            format.turbo_stream { flash.now[:notice] = 'Customer deleted!' }
         end
     end
 

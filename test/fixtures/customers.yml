@@ -25,16 +25,17 @@
 #  fk_rails_...  (user_id => users.id)
 #
 
-# one:
-#   name: MyString
-#   email: MyString
-#   phone_number: MyString
-#   user: one
-#   business: one
+customer_1:
+  name: John The Doe
+  email: john@doe.com
+  phone_number: 08111110000
+  user: tolase
+  business: business_1
 
-# two:
-#   name: MyString
-#   email: MyString
-#   phone_number: MyString
-#   user: two
-#   business: two
+customer_2:
+  name: Jane The Doe
+  email: jane@doe.com
+  phone_number: 08011110000
+  user: tolase
+  business: business_2
+

@@ -27,7 +27,34 @@
 require "test_helper"
 
 class CustomerTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def setup
+    @user = users(:tolase)
+    @business = businesses(:business_1)
+    @customer = @business.customers.build(name: 'Tolase kelvin', email: 'tolase@example.com', phone_number: '09100000011', user: @user)
+  end
+
+  test 'customer must be valid' do
+    assert @customer.valid?
+  end
+
+  test 'name must be present' do
+    @customer.name = ''
+    assert_not @customer.valid?
+  end
+
+  test 'name must be less than 50' do
+    @customer.name = 'a' * 50 + 'a'
+    assert_not @customer.valid?
+  end
+
+  test 'name must not be less than 3' do
+    @customer.name = 'a' * 2
+    assert_not @customer.valid?
+  end
+
+  test 'name must be unique' do
+    @customer.dup.name = @customer.name
+    @customer.dup.save
+    assert_not @customer.valid?
+  end
 end

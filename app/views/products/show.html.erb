@@ -39,15 +39,15 @@
                     <% else %>
                         <td>Not available</td>
                     <% end %>
-                    <!--
-                    <% if @product.stores.present? %>
-                    <td>
-                        <% @product.stores.each do |store| %>
-                            <%= link_to store.name, business_store_path(@business, store), class: 'd-inline-block' %>,
-                        <% end %>
-                    </td>
-                    -->
-                    <% end %>
+                    
+                    <%# if @product.stores.present? %>
+                        <!--<td>
+                            <%# @product.stores.each do |store| %>
+                                <%#= link_to store.name, business_store_path(@business, store), class: 'd-inline-block' %>,
+                            <%# end %>
+                        </td>-->
+                    
+                    <%# end %>
                 </tr>
             </tbody>
         </table>
@@ -96,11 +96,11 @@
             </table>
         </div>
     <% else %>
-      <div class="empty-state text-center mt-5">
-          <%= image_tag 'no-results', size: "100" %>
-          <p class="empty-state__text mt-3" style="color:purple">
-              This product is not available in any of your stores
-          </p>
-      </div>
+        <div class="empty-state text-center mt-5">
+            <%= image_tag 'https://cdn-icons-png.flaticon.com/512/6134/6134065.png', size: "100" %>
+            <p class="empty-state__text mt-3" style="color:purple">
+                This product is not available in any of your stores
+            </p>
+        </div>
     <% end %>
 </div>
