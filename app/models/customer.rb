@@ -2,14 +2,15 @@
 #
 # Table name: customers
 #
-#  id           :bigint           not null, primary key
-#  email        :string
-#  name         :string           not null
-#  phone_number :string
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  business_id  :bigint           not null
-#  user_id      :bigint           not null
+#  id                       :bigint           not null, primary key
+#  email                    :string
+#  name                     :string           not null
+#  phone_number             :string
+#  product_item_dates_count :integer          default(0), not null
+#  created_at               :datetime         not null
+#  updated_at               :datetime         not null
+#  business_id              :bigint           not null
+#  user_id                  :bigint           not null
 #
 # Indexes
 #
@@ -42,6 +43,8 @@ class Customer < ApplicationRecord
   # associations
   belongs_to :user, counter_cache: :customers_count
   belongs_to :business, counter_cache: :customers_count
+  
+  has_many :product_item_dates, dependent: :destroy, counter_cache: :product_item_dates_count
 
   # customers should be ordered in descending order
   scope :ordered, -> { order(id: :desc) }
