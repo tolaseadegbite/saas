@@ -45,6 +45,7 @@ class Customer < ApplicationRecord
   belongs_to :business, counter_cache: :customers_count
   
   has_many :product_item_dates, dependent: :destroy, counter_cache: :product_item_dates_count
+  has_many :product_items, through: :product_item_dates, counter_cache: :product_items_count
 
   # customers should be ordered in descending order
   scope :ordered, -> { order(id: :desc) }
