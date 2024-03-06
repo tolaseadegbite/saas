@@ -1,0 +1,17 @@
+<%= form_with model: [business, customer, product_item_date] do |f| %>
+    <%= render 'shared/error_messages', f: f %>
+
+    <div class="d-lg-flex justify-content-between bg-white mb-2 align-items-center px-2 py-1 rounded gap-2">
+        <div class="w-100">
+            <%= f.date_field :date, autofocus: true, placeholder: 'Date', class: 'form-control rounded-1' %>
+        </div>
+
+        <%= link_to [@business, @customer], class: "btn btn-light rounded-1 border" do %>
+            <%= image_tag "x.png", width: "19" %>
+        <% end %>
+
+        <%= button_tag type: 'Submit', class: "btn btn-success rounded-1 border" do %>
+            <%= image_tag "check.png", width: "19" %>
+        <% end %>
+    </div>
+<% end %>

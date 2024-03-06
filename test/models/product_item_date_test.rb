@@ -24,7 +24,19 @@
 require "test_helper"
 
 class ProductItemDateTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def setup
+    @user = users(:tolase)
+    @business = businesses(:business_1)
+    @customer = customers(:customer_1)
+    @product_item_date = @customer.product_item_dates.build(date: 5.days.ago, user: @user)
+  end
+
+  test 'should be valid' do
+    assert @product_item_date.valid?
+  end
+
+  test 'date should be present' do
+    @product_item_date.date = nil
+    assert_not @product_item_date.valid?
+  end
 end

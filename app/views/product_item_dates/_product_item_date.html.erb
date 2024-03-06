@@ -1,0 +1,25 @@
+<%= turbo_frame_tag product_item_date do %>
+    <div class="customer d-flex justify-content-between mb-3 align-items-center px-2 rounded">
+        <div>
+            <h2 class="h3">
+                <%= product_item_date.date %>
+            </h2>
+            <p class="m-0">
+                — created by: <%= product_item_date.user.fullname %>
+            </p>
+        </div>
+
+        <div>
+            <div class="d-flex gap-2">
+
+                <%= link_to edit_business_customer_product_item_date_path(business, customer, product_item_date), class: 'btn rounded-1 bg-light shadow-sm' do %>
+                    <i class="bi bi-pencil-square fs-5 text-secondary"></i>
+                <% end %>
+
+                <%= link_to business_customer_product_item_date_path(business, customer, product_item_date), data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" }, class: 'btn rounded-1 bg-light shadow-sm' do %>
+                    <i class="bi bi-trash fs-5 text-secondary"></i>
+                <% end %>
+            </div>
+        </div>
+    </div>
+<% end %>

@@ -22,9 +22,9 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class ProductItemDate < ApplicationRecord
-  belongs_to :customer
+  belongs_to :customer, counter_cache: :product_item_dates_count
 
-  belongs_to :user
+  belongs_to :user, counter_cache: :product_item_dates_count
   
   validates_presence_of :date, uniqueness: { scope: :customer_id, message: "Date has been created" }
   

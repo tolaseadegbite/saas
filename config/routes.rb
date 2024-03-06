@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   root "static_pages#home"
 
@@ -8,7 +7,7 @@ Rails.application.routes.draw do
     resources :products
     resources :stores
     resources :customers do
-      resources :product_item_dates
+      resources :product_item_dates, except: [:index, :show]
     end
   end
   

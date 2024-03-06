@@ -1,0 +1,16 @@
+<% provide(:title, "Edit Date | #{@customer.name}") %>
+
+<div class="container mt-3 w-75 mx-auto">
+    <%= link_to sanitize("&larr; Back to customer"), business_customer_path(@business, @customer) %>
+    <div class="header my-4">
+        <h1 class="h4">
+            Edit Product Item Date
+        </h1>
+    </div>
+
+    <%= turbo_frame_tag @product_item_date do %>
+        <div class="wrapper mb-2 bg-white rounded shadow-sm">
+            <%= render 'form', business: @business, customer: @customer, product_item_date: @product_item_date %>
+        </div>
+    <% end %>
+</div>

@@ -22,12 +22,12 @@
 #  fk_rails_...  (user_id => users.id)
 #
 
-# one:
-#   date: 2024-03-03
-#   customer: one
-#   user: one
+date_1:
+  date: 2024-03-03
+  customer: customer_1
+  user: tolase
 
-# two:
-#   date: 2024-03-03
-#   customer: two
-#   user: two
+date_2:
+  date: 2024-03-04
+  customer: customer_1
+  user: tolase

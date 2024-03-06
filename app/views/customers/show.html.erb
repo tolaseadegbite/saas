@@ -1,0 +1,36 @@
+<% provide(:title, "#{@customer.name} | #{@business.name}") %>
+
+<div class="container-fluid bg-white py-3 shadow-bottom-sm">
+    <div class="d-flex justify-content-between header">
+        <div class="first-col">
+            <h1 class="h2 m-0"><%= @customer.name %></h1>
+            <div class="mt-2">
+                <span class="me-2"><i class="bi bi-envelope-at me-1"></i> <%= @customer.email %></span>
+                <span class="me-2"><i class="bi bi-telephone me-1"></i> <%= @customer.phone_number %></span>
+                <span><i class="bi bi-calendar me-1"></i> <%= pluralize(@customer.product_item_dates_count, 'date') %></span>
+                —
+                <span> created by <%= @customer.user.fullname %></span>
+            </div>
+        </div>
+
+        <div class="second-col">
+            <%#= link_to edit_business_customer_path(@business, @customer), class: 'btn btn-success rounded-1 header-btn', style: "font-size: 13px", data: { turbo_frame: dom_id(Customer.new) } do %>
+                <!--<i class="bi bi-pen"></i>
+                Edit customer-->
+            <%# end %>
+
+            <%= link_to new_business_customer_product_item_date_path(@business, @customer), class: 'btn btn-success rounded-1 header-btn', style: "font-size: 13px", data: { turbo_frame: dom_id(ProductItemDate.new) } do %>
+                <i class="bi bi-plus-lg"></i>
+                New Date
+            <% end %>
+        </div>
+    </div>
+</div>
+
+<div class="container d-block py-4">
+    <%= turbo_frame_tag ProductItemDate.new %>
+
+    <%= turbo_frame_tag "product_item_dates" do %>
+        <%= render @product_item_dates, business: @business, customer: @customer %>
+    <% end %>
+</div>

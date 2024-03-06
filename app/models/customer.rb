@@ -38,7 +38,7 @@ class Customer < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { scope: :business_id, case_sensitive: false, message: "Email name must be unique" }
 
   # validates presence, uniqueness and length of phone number
-  validates :phone_number, presence: true, uniqueness: {scope: :business_id, message: "Phone number must be unique"}, length: { minimum: 3, maximum: 255 }
+  validates :phone_number, presence: true, uniqueness: {scope: :business_id, message: "Phone number must be unique"}
 
   # associations
   belongs_to :user, counter_cache: :customers_count
