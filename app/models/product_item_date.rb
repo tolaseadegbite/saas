@@ -27,6 +27,8 @@ class ProductItemDate < ApplicationRecord
   belongs_to :user, counter_cache: :product_item_dates_count
   
   validates_presence_of :date, uniqueness: { scope: :customer_id, message: "Date has been created" }
+
+  has_many :product_items, dependent: :destroy, counter_cache: :product_items_count
   
   scope :ordered, -> { order(date: :asc) }
 

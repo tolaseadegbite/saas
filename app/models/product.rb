@@ -41,6 +41,7 @@ class Product < ApplicationRecord
   # store products association
   has_many :store_products, dependent: :destroy
   has_many :stores, through: :store_products
+  has_many :product_items, dependent: :destroy, counter_cache: :product_items_count
 
   # order products by name in ascending order
   scope :ordered, -> { where('name LIKE ?', "a%").order(:name) }

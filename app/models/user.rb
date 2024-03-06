@@ -45,6 +45,7 @@ class User < ApplicationRecord
   has_many :stores, dependent: :destroy, counter_cache: :stores_count
   has_many :customers, dependent: :destroy, counter_cache: :customers_count
   has_many :product_item_dates, dependent: :destroy, counter_cache: :product_item_dates_count
+  has_many :product_items, dependent: :destroy, counter_cache: :product_items_count
 
   # has_one_attached :avatar
 end
